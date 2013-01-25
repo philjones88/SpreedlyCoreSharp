@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreedlyCoreSharp.Test", "SpreedlyCoreSharp.Test\SpreedlyCoreSharp.Test.csproj", "{525D2661-1914-4E12-8D44-528BFB1784E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreedlyCoreSharp", "SpreedlyCoreSharp\SpreedlyCoreSharp.csproj", "{6D00558B-C6EB-47AF-914D-466720C0E2EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C4886E6D-FB83-4000-AE39-30065CED7DC5}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreedlyCoreSharp.WebSample", "SpreedlyCoreSharp.WebSample\SpreedlyCoreSharp.WebSample.csproj", "{93CFCE62-4028-4F0A-8218-9851733940ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{525D2661-1914-4E12-8D44-528BFB1784E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{525D2661-1914-4E12-8D44-528BFB1784E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{525D2661-1914-4E12-8D44-528BFB1784E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{525D2661-1914-4E12-8D44-528BFB1784E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D00558B-C6EB-47AF-914D-466720C0E2EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D00558B-C6EB-47AF-914D-466720C0E2EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D00558B-C6EB-47AF-914D-466720C0E2EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D00558B-C6EB-47AF-914D-466720C0E2EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93CFCE62-4028-4F0A-8218-9851733940ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93CFCE62-4028-4F0A-8218-9851733940ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93CFCE62-4028-4F0A-8218-9851733940ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93CFCE62-4028-4F0A-8218-9851733940ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

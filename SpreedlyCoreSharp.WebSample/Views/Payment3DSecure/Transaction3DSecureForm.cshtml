@@ -1,0 +1,10 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<string>
+
+@{
+    ViewBag.Active = "3DPayment";
+    Layout = "_Layout";
+}              
+
+<p>Form given to us by SpreedlyCore for 3D Secure... You could do more fancy styling here.</p>
+
+@Html.Raw(Model)

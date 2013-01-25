@@ -1,0 +1,13 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<string>
+@{
+    ViewBag.Active = "Transaction";
+    Layout = "_Layout.cshtml";
+}
+
+<div class="span12">
+    <h1>Raw transaction transcript for: @Html.RenderContext.Context.Parameters.token</h1>
+    
+    <p>Note: On the test gateway, this will always be empty.</p>
+
+    <div>@Model</div>
+</div>

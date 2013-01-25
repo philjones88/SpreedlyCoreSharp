@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<transaction>
+  <amount type="integer">100</amount>
+  <on_test_gateway type="boolean">true</on_test_gateway>
+  <created_at type="datetime">2012-12-19T20:22:21Z</created_at>
+  <updated_at type="datetime">2012-12-19T20:22:21Z</updated_at>
+  <currency_code>GBP</currency_code>
+  <succeeded type="boolean">true</succeeded>
+  <state>succeeded</state>
+  <token>token_here</token>
+  <transaction_type>Purchase</transaction_type>
+  <order_id nil="true"/>
+  <ip nil="true"/>
+  <description nil="true"/>
+  <merchant_name_descriptor nil="true"/>
+  <merchant_location_descriptor nil="true"/>
+  <message key="messages.transaction_succeeded">Succeeded!</message>
+  <gateway_token>gateway_token</gateway_token>
+  <response>
+    <success type="boolean">true</success>
+    <message>Successful purchase</message>
+    <avs_code nil="true"/>
+    <avs_message nil="true"/>
+    <cvv_code nil="true"/>
+    <cvv_message nil="true"/>
+    <error_code></error_code>
+    <error_detail nil="true"/>
+    <created_at type="datetime">2012-12-19T20:22:21Z</created_at>
+    <updated_at type="datetime">2012-12-19T20:22:21Z</updated_at>
+  </response>
+  <payment_method>
+    <token>payment_method_token</token>
+    <created_at type="datetime">2012-12-19T20:22:20Z</created_at>
+    <updated_at type="datetime">2012-12-19T20:22:21Z</updated_at>
+    <last_four_digits>1111</last_four_digits>
+    <card_type>visa</card_type>
+    <first_name>Four</first_name>
+    <last_name>Test</last_name>
+    <month type="integer">5</month>
+    <year type="integer">2015</year>
+    <email>test@test.com</email>
+    <address1></address1>
+    <address2></address2>
+    <city></city>
+    <state nil="true"/>
+    <zip></zip>
+    <country nil="true"/>
+    <phone_number></phone_number>
+    <data nil="true"/>
+    <payment_method_type>credit_card</payment_method_type>
+    <verification_value></verification_value>
+    <number>XXXX-XXXX-XXXX-1111</number>
+    <errors>
+    </errors>
+  </payment_method>
+  <api_urls>
+  </api_urls>
+</transaction>

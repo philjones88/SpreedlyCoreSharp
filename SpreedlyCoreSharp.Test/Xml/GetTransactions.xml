@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<transactions>
+  <transaction>
+    <token>transaction_1_token</token>
+    <created_at type="datetime">2012-11-16T20:36:03Z</created_at>
+    <updated_at type="datetime">2012-11-16T20:36:03Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>AddPaymentMethod</transaction_type>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>transaction1_payment_token</token>
+      <created_at type="datetime">2012-11-16T20:36:03Z</created_at>
+      <updated_at type="datetime">2012-11-16T20:36:04Z</updated_at>
+      <last_four_digits>3886</last_four_digits>
+      <card_type>visa</card_type>
+      <first_name>Bob</first_name>
+      <last_name>Smith</last_name>
+      <month type="integer">1</month>
+      <year type="integer">2020</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value/>
+      <number>XXXX-XXXX-XXXX-3886</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <amount type="integer">100</amount>
+    <on_test_gateway type="boolean">false</on_test_gateway>
+    <created_at type="datetime">2012-11-16T20:36:04Z</created_at>
+    <updated_at type="datetime">2012-11-16T21:16:18Z</updated_at>
+    <currency_code>USD</currency_code>
+    <succeeded type="boolean">true</succeeded>
+    <state>succeeded</state>
+    <token>aNqEBN6JAfqgnf2xQtS3OAcgYMR</token>
+    <transaction_type>Purchase</transaction_type>
+    <order_id nil="true"/>
+    <ip nil="true"/>
+    <description nil="true"/>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <gateway_token>3D8Va8g67sHpC0d75xmhiqY4Lr0</gateway_token>
+    <offsite_response>
+      <success type="boolean">true</success>
+      <message>Succeeded</message>
+      <error_code nil="true"/>
+      <error_detail nil="true"/>
+      <cancelled type="boolean">false</cancelled>
+      <created_at type="datetime">2012-11-16T20:36:04Z</created_at>
+      <updated_at type="datetime">2012-11-16T21:16:18Z</updated_at>
+    </offsite_response>
+    <payment_method>
+      <token>98qitCYM799AL6GaMh4eprash4x</token>
+      <created_at type="datetime">2012-11-16T20:36:03Z</created_at>
+      <updated_at type="datetime">2012-11-16T20:36:04Z</updated_at>
+      <last_four_digits>3886</last_four_digits>
+      <card_type>visa</card_type>
+      <first_name>Bob</first_name>
+      <last_name>Smith</last_name>
+      <month type="integer">1</month>
+      <year type="integer">2020</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value/>
+      <number>XXXX-XXXX-XXXX-3886</number>
+      <errors>
+      </errors>
+    </payment_method>
+    <callback_url>http://127.0.0.1:3050</callback_url>
+    <redirect_url>http://example.com/handle_redirect</redirect_url>
+    <checkout_url nil="true"/>
+    <checkout_form>
+      <![CDATA[
+<form action="http://core.spreedly.dev/test/3D8Va8g67sHpC0d75xmhiqY4Lr0/auth/aNqEBN6JAfqgnf2xQtS3OAcgYMR" method="POST">
+  <div>
+    <input name="PaReq" value="" type="hidden"/>
+    <input name="MD" value="" type="hidden"/>
+    <input name="TermUrl" value="http://core.spreedly.dev/transaction/aNqEBN6JAfqgnf2xQtS3OAcgYMR/redirect" type="hidden"/>
+    <input name="Complete" value="Authorize Transaction" type="submit"/>
+  </div>
+</form>
+]]>
+    </checkout_form>
+    <setup_response>
+      <success type="boolean">true</success>
+      <message>Checked enrollment status</message>
+      <error_code/>
+      <checkout_url nil="true"/>
+      <created_at type="datetime">2012-11-16T20:36:04Z</created_at>
+      <updated_at type="datetime">2012-11-16T21:16:18Z</updated_at>
+    </setup_response>
+    <redirect_response>
+      <success type="boolean">true</success>
+      <message>Succeeded</message>
+      <error_code nil="true"/>
+      <error_detail nil="true"/>
+      <cancelled type="boolean">false</cancelled>
+      <created_at type="datetime">2012-11-16T20:36:04Z</created_at>
+      <updated_at type="datetime">2012-11-16T21:16:18Z</updated_at>
+    </redirect_response>
+    <api_urls>
+      <callback_conversations>http://core.spreedly.dev/v1/callbacks/3qgqPc5JoZi4nPZAWvKz0ElF4zq/conversations.xml</callback_conversations>
+    </api_urls>
+  </transaction>
+  <transaction>
+    <token>DvguWpDXRykbCUknwFk1PJZlv6i</token>
+    <created_at type="datetime">2012-11-16T20:36:03Z</created_at>
+    <updated_at type="datetime">2012-11-16T20:36:03Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>RetainPaymentMethod</transaction_type>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>98qitCYM799AL6GaMh4eprash4x</token>
+      <created_at type="datetime">2012-11-16T20:36:03Z</created_at>
+      <updated_at type="datetime">2012-11-16T20:36:04Z</updated_at>
+      <last_four_digits>3886</last_four_digits>
+      <card_type>visa</card_type>
+      <first_name>Bob</first_name>
+      <last_name>Smith</last_name>
+      <month type="integer">1</month>
+      <year type="integer">2020</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value/>
+      <number>XXXX-XXXX-XXXX-3886</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+</transactions>

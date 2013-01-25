@@ -1,0 +1,1 @@
+Work in progress SpreedlyCore C# client

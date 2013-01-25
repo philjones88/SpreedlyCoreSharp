@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<transaction>
+  <attempt_3dsecure>true</attempt_3dsecure>
+  <amount>100</amount>
+  <currency_code>USD</currency_code>
+  <payment_method_token>payment_method_token</payment_method_token>
+  <redirect_url>http://example.com/handle_redirect</redirect_url>
+  <callback_url>http://example.com/handle_callback</callback_url>
+</transaction>

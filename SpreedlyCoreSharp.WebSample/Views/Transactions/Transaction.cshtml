@@ -1,0 +1,13 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<SpreedlyCoreSharp.Domain.Transaction>
+@{
+    ViewBag.Active = "Transaction";
+    Layout = "_Layout";
+}
+
+<div class="span12">
+    <p>@Model.Token</p>
+
+    <p>@Model.CreatedAt</p>
+
+    <p>@Model.Succeeded</p>
+</div>

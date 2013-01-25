@@ -1,0 +1,769 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<transactions>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-11-24T12:06:52Z</created_at>
+    <updated_at type="datetime">2012-11-24T12:06:52Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>AddPaymentMethod</transaction_type>
+    <retained type="boolean">false</retained>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-11-24T12:06:52Z</created_at>
+      <updated_at type="datetime">2012-11-25T00:25:11Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>Bob</first_name>
+      <last_name>Smith</last_name>
+      <month type="integer">3</month>
+      <year type="integer">14</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-11-24T12:08:00Z</created_at>
+    <updated_at type="datetime">2012-11-24T12:08:00Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>AddPaymentMethod</transaction_type>
+    <retained type="boolean">false</retained>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-11-24T12:08:00Z</created_at>
+      <updated_at type="datetime">2012-11-25T00:25:11Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>Bob</first_name>
+      <last_name>Smith</last_name>
+      <month type="integer">3</month>
+      <year type="integer">14</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-11-24T12:14:20Z</created_at>
+    <updated_at type="datetime">2012-11-24T12:14:20Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>AddPaymentMethod</transaction_type>
+    <retained type="boolean">false</retained>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-11-24T12:14:20Z</created_at>
+      <updated_at type="datetime">2012-11-25T00:25:10Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>Bob</first_name>
+      <last_name>Smith</last_name>
+      <month type="integer">1</month>
+      <year type="integer">14</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <amount type="integer">10</amount>
+    <on_test_gateway type="boolean">false</on_test_gateway>
+    <created_at type="datetime">2012-11-24T12:14:28Z</created_at>
+    <updated_at type="datetime">2012-11-24T12:14:28Z</updated_at>
+    <currency_code>GBP</currency_code>
+    <succeeded type="boolean">false</succeeded>
+    <state>failed</state>
+    <token>token_here</token>
+    <transaction_type>Purchase</transaction_type>
+    <order_id nil="true"/>
+    <ip nil="true"/>
+    <description nil="true"/>
+    <merchant_name_descriptor nil="true"/>
+    <merchant_location_descriptor nil="true"/>
+    <message key="messages.payment_method_invalid">The payment method is invalid.</message>
+    <gateway_token>gateway_token_here</gateway_token>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-11-24T12:14:20Z</created_at>
+      <updated_at type="datetime">2012-11-25T00:25:10Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>Bob</first_name>
+      <last_name>Smith</last_name>
+      <month type="integer">1</month>
+      <year type="integer">14</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+    <api_urls>
+    </api_urls>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-11-25T00:25:09Z</created_at>
+    <updated_at type="datetime">2012-11-25T00:25:10Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>RedactPaymentMethod</transaction_type>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-11-24T12:14:20Z</created_at>
+      <updated_at type="datetime">2012-11-25T00:25:10Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>Bob</first_name>
+      <last_name>Smith</last_name>
+      <month type="integer">1</month>
+      <year type="integer">14</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-11-25T00:25:10Z</created_at>
+    <updated_at type="datetime">2012-11-25T00:25:11Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>RedactPaymentMethod</transaction_type>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-11-24T12:06:52Z</created_at>
+      <updated_at type="datetime">2012-11-25T00:25:11Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>Bob</first_name>
+      <last_name>Smith</last_name>
+      <month type="integer">3</month>
+      <year type="integer">14</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-11-25T00:25:10Z</created_at>
+    <updated_at type="datetime">2012-11-25T00:25:11Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>RedactPaymentMethod</transaction_type>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-11-24T12:08:00Z</created_at>
+      <updated_at type="datetime">2012-11-25T00:25:11Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>Bob</first_name>
+      <last_name>Smith</last_name>
+      <month type="integer">3</month>
+      <year type="integer">14</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-12-16T16:20:29Z</created_at>
+    <updated_at type="datetime">2012-12-16T16:20:29Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>AddPaymentMethod</transaction_type>
+    <retained type="boolean">false</retained>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-12-16T16:20:29Z</created_at>
+      <updated_at type="datetime">2012-12-16T16:24:09Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>bob</first_name>
+      <last_name>smith</last_name>
+      <month type="integer">3</month>
+      <year type="integer">2013</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-12-16T16:48:56Z</created_at>
+    <updated_at type="datetime">2012-12-16T16:48:56Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>AddPaymentMethod</transaction_type>
+    <retained type="boolean">false</retained>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-12-16T16:48:56Z</created_at>
+      <updated_at type="datetime">2012-12-16T16:48:58Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type>visa</card_type>
+      <first_name>bob</first_name>
+      <last_name>smith</last_name>
+      <month type="integer">1</month>
+      <year type="integer">2014</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <amount type="integer">100</amount>
+    <on_test_gateway type="boolean">true</on_test_gateway>
+    <created_at type="datetime">2012-12-16T16:48:57Z</created_at>
+    <updated_at type="datetime">2012-12-16T16:48:58Z</updated_at>
+    <currency_code>GBP</currency_code>
+    <succeeded type="boolean">true</succeeded>
+    <state>succeeded</state>
+    <token>token_here</token>
+    <transaction_type>Purchase</transaction_type>
+    <order_id nil="true"/>
+    <ip nil="true"/>
+    <description nil="true"/>
+    <merchant_name_descriptor nil="true"/>
+    <merchant_location_descriptor nil="true"/>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <gateway_token>gateway_token_here</gateway_token>
+    <response>
+      <success type="boolean">true</success>
+      <message>Successful purchase</message>
+      <avs_code nil="true"/>
+      <avs_message nil="true"/>
+      <cvv_code nil="true"/>
+      <cvv_message nil="true"/>
+      <error_code></error_code>
+      <error_detail nil="true"/>
+      <created_at type="datetime">2012-12-16T16:48:58Z</created_at>
+      <updated_at type="datetime">2012-12-16T16:48:58Z</updated_at>
+    </response>
+    <payment_method>
+      <token>token_here</token>
+      <created_at type="datetime">2012-12-16T16:48:56Z</created_at>
+      <updated_at type="datetime">2012-12-16T16:48:58Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type>visa</card_type>
+      <first_name>bob</first_name>
+      <last_name>smith</last_name>
+      <month type="integer">1</month>
+      <year type="integer">2014</year>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+    <api_urls>
+    </api_urls>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-12-16T16:52:49Z</created_at>
+    <updated_at type="datetime">2012-12-16T16:52:49Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>AddPaymentMethod</transaction_type>
+    <retained type="boolean">false</retained>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-12-16T16:52:49Z</created_at>
+      <updated_at type="datetime">2012-12-16T16:52:49Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>bob</first_name>
+      <last_name></last_name>
+      <month nil="true"/>
+      <year nil="true"/>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <amount type="integer">100</amount>
+    <on_test_gateway type="boolean">false</on_test_gateway>
+    <created_at type="datetime">2012-12-16T16:52:50Z</created_at>
+    <updated_at type="datetime">2012-12-16T16:52:50Z</updated_at>
+    <currency_code>GBP</currency_code>
+    <succeeded type="boolean">false</succeeded>
+    <state>failed</state>
+    <token>token_here</token>
+    <transaction_type>Purchase</transaction_type>
+    <order_id nil="true"/>
+    <ip nil="true"/>
+    <description nil="true"/>
+    <merchant_name_descriptor nil="true"/>
+    <merchant_location_descriptor nil="true"/>
+    <message key="messages.payment_method_invalid">The payment method is invalid.</message>
+    <gateway_token>gateway_token_here</gateway_token>
+    <payment_method>
+      <token>token_here</token>
+      <created_at type="datetime">2012-12-16T16:52:49Z</created_at>
+      <updated_at type="datetime">2012-12-16T16:52:49Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>bob</first_name>
+      <last_name></last_name>
+      <month nil="true"/>
+      <year nil="true"/>
+      <email nil="true"/>
+      <address1 nil="true"/>
+      <address2 nil="true"/>
+      <city nil="true"/>
+      <state nil="true"/>
+      <zip nil="true"/>
+      <country nil="true"/>
+      <phone_number nil="true"/>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+    <api_urls>
+    </api_urls>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-12-16T17:10:00Z</created_at>
+    <updated_at type="datetime">2012-12-16T17:10:00Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>AddPaymentMethod</transaction_type>
+    <retained type="boolean">false</retained>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-12-16T17:10:00Z</created_at>
+      <updated_at type="datetime">2012-12-16T17:10:00Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>Bob</first_name>
+      <last_name></last_name>
+      <month nil="true"/>
+      <year nil="true"/>
+      <email></email>
+      <address1></address1>
+      <address2></address2>
+      <city></city>
+      <state nil="true"/>
+      <zip></zip>
+      <country nil="true"/>
+      <phone_number></phone_number>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <amount type="integer">100</amount>
+    <on_test_gateway type="boolean">false</on_test_gateway>
+    <created_at type="datetime">2012-12-16T17:10:02Z</created_at>
+    <updated_at type="datetime">2012-12-16T17:10:02Z</updated_at>
+    <currency_code>GBP</currency_code>
+    <succeeded type="boolean">false</succeeded>
+    <state>failed</state>
+    <token>token_here</token>
+    <transaction_type>Purchase</transaction_type>
+    <order_id nil="true"/>
+    <ip nil="true"/>
+    <description nil="true"/>
+    <merchant_name_descriptor nil="true"/>
+    <merchant_location_descriptor nil="true"/>
+    <message key="messages.payment_method_invalid">The payment method is invalid.</message>
+    <gateway_token>gateway_token_here</gateway_token>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-12-16T17:10:00Z</created_at>
+      <updated_at type="datetime">2012-12-16T17:10:00Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>Bob</first_name>
+      <last_name></last_name>
+      <month nil="true"/>
+      <year nil="true"/>
+      <email></email>
+      <address1></address1>
+      <address2></address2>
+      <city></city>
+      <state nil="true"/>
+      <zip></zip>
+      <country nil="true"/>
+      <phone_number></phone_number>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+    <api_urls>
+    </api_urls>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-12-16T17:36:29Z</created_at>
+    <updated_at type="datetime">2012-12-16T17:36:29Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>AddPaymentMethod</transaction_type>
+    <retained type="boolean">false</retained>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-12-16T17:36:29Z</created_at>
+      <updated_at type="datetime">2012-12-16T17:36:29Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name></first_name>
+      <last_name></last_name>
+      <month nil="true"/>
+      <year nil="true"/>
+      <email></email>
+      <address1></address1>
+      <address2></address2>
+      <city></city>
+      <state nil="true"/>
+      <zip></zip>
+      <country nil="true"/>
+      <phone_number></phone_number>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <amount type="integer">100</amount>
+    <on_test_gateway type="boolean">false</on_test_gateway>
+    <created_at type="datetime">2012-12-16T17:36:29Z</created_at>
+    <updated_at type="datetime">2012-12-16T17:36:29Z</updated_at>
+    <currency_code>GBP</currency_code>
+    <succeeded type="boolean">false</succeeded>
+    <state>failed</state>
+    <token>token_here</token>
+    <transaction_type>Purchase</transaction_type>
+    <order_id nil="true"/>
+    <ip nil="true"/>
+    <description nil="true"/>
+    <merchant_name_descriptor nil="true"/>
+    <merchant_location_descriptor nil="true"/>
+    <message key="messages.payment_method_invalid">The payment method is invalid.</message>
+    <gateway_token>gateway_token_here</gateway_token>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-12-16T17:36:29Z</created_at>
+      <updated_at type="datetime">2012-12-16T17:36:29Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name></first_name>
+      <last_name></last_name>
+      <month nil="true"/>
+      <year nil="true"/>
+      <email></email>
+      <address1></address1>
+      <address2></address2>
+      <city></city>
+      <state nil="true"/>
+      <zip></zip>
+      <country nil="true"/>
+      <phone_number></phone_number>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+    <api_urls>
+    </api_urls>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-12-16T17:37:10Z</created_at>
+    <updated_at type="datetime">2012-12-16T17:37:10Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>AddPaymentMethod</transaction_type>
+    <retained type="boolean">false</retained>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-12-16T17:37:10Z</created_at>
+      <updated_at type="datetime">2012-12-16T17:42:10Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>Bob</first_name>
+      <last_name></last_name>
+      <month nil="true"/>
+      <year nil="true"/>
+      <email></email>
+      <address1></address1>
+      <address2></address2>
+      <city></city>
+      <state nil="true"/>
+      <zip></zip>
+      <country nil="true"/>
+      <phone_number></phone_number>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <amount type="integer">100</amount>
+    <on_test_gateway type="boolean">false</on_test_gateway>
+    <created_at type="datetime">2012-12-16T17:37:11Z</created_at>
+    <updated_at type="datetime">2012-12-16T17:37:11Z</updated_at>
+    <currency_code>GBP</currency_code>
+    <succeeded type="boolean">false</succeeded>
+    <state>failed</state>
+    <token>token_here</token>
+    <transaction_type>Purchase</transaction_type>
+    <order_id nil="true"/>
+    <ip nil="true"/>
+    <description nil="true"/>
+    <merchant_name_descriptor nil="true"/>
+    <merchant_location_descriptor nil="true"/>
+    <message key="messages.payment_method_invalid">The payment method is invalid.</message>
+    <gateway_token>gateway_token_here</gateway_token>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-12-16T17:37:10Z</created_at>
+      <updated_at type="datetime">2012-12-16T17:42:10Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name>Bob</first_name>
+      <last_name></last_name>
+      <month nil="true"/>
+      <year nil="true"/>
+      <email></email>
+      <address1></address1>
+      <address2></address2>
+      <city></city>
+      <state nil="true"/>
+      <zip></zip>
+      <country nil="true"/>
+      <phone_number></phone_number>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+    <api_urls>
+    </api_urls>
+  </transaction>
+  <transaction>
+    <token>token_here</token>
+    <created_at type="datetime">2012-12-16T17:37:55Z</created_at>
+    <updated_at type="datetime">2012-12-16T17:37:55Z</updated_at>
+    <succeeded type="boolean">true</succeeded>
+    <transaction_type>AddPaymentMethod</transaction_type>
+    <retained type="boolean">false</retained>
+    <message key="messages.transaction_succeeded">Succeeded!</message>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-12-16T17:37:55Z</created_at>
+      <updated_at type="datetime">2012-12-16T17:37:55Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name></first_name>
+      <last_name></last_name>
+      <month nil="true"/>
+      <year nil="true"/>
+      <email></email>
+      <address1></address1>
+      <address2></address2>
+      <city></city>
+      <state nil="true"/>
+      <zip></zip>
+      <country nil="true"/>
+      <phone_number></phone_number>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+  </transaction>
+  <transaction>
+    <amount type="integer">100</amount>
+    <on_test_gateway type="boolean">false</on_test_gateway>
+    <created_at type="datetime">2012-12-16T17:37:55Z</created_at>
+    <updated_at type="datetime">2012-12-16T17:37:55Z</updated_at>
+    <currency_code>GBP</currency_code>
+    <succeeded type="boolean">false</succeeded>
+    <state>failed</state>
+    <token>token_here</token>
+    <transaction_type>Purchase</transaction_type>
+    <order_id nil="true"/>
+    <ip nil="true"/>
+    <description nil="true"/>
+    <merchant_name_descriptor nil="true"/>
+    <merchant_location_descriptor nil="true"/>
+    <message key="messages.payment_method_invalid">The payment method is invalid.</message>
+    <gateway_token>gateway_token_here</gateway_token>
+    <payment_method>
+      <token>payment_token_here</token>
+      <created_at type="datetime">2012-12-16T17:37:55Z</created_at>
+      <updated_at type="datetime">2012-12-16T17:37:55Z</updated_at>
+      <last_four_digits>1111</last_four_digits>
+      <card_type nil="true"/>
+      <first_name></first_name>
+      <last_name></last_name>
+      <month nil="true"/>
+      <year nil="true"/>
+      <email></email>
+      <address1></address1>
+      <address2></address2>
+      <city></city>
+      <state nil="true"/>
+      <zip></zip>
+      <country nil="true"/>
+      <phone_number></phone_number>
+      <data nil="true"/>
+      <payment_method_type>credit_card</payment_method_type>
+      <verification_value></verification_value>
+      <number>XXXX-XXXX-XXXX-1111</number>
+      <errors>
+      </errors>
+    </payment_method>
+    <api_urls>
+    </api_urls>
+  </transaction>
+</transactions>

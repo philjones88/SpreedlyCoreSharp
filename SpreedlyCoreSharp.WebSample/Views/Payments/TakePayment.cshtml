@@ -1,0 +1,131 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<SpreedlyCoreSharp.Html.TransactionViewModel>
+@{
+    ViewBag.Active = "Payment";
+    Layout = "_Layout.cshtml";
+}
+
+<div class="span12">
+    <h1>Standard SpreedlyCore Payment</h1>
+
+    <p>Use the test card datea from: <a href="https://spreedlycore.com/manual/test-data">here</a> (Don't use 3D Secure on this form)</p>
+
+    <form action="https://spreedlycore.com/v1/payment_methods" method="POST" class="form-horizontal">
+        <input name="@Model._RedirectUrl" type="hidden" value="@Model.RedirectUrl" />
+
+        <input name="@Model._ApiLogin" type="hidden" value="@Model.ApiLogin" />
+
+        @if (!string.IsNullOrEmpty(Model.PaymentMethodToken))
+        {
+            <input name="@Model._PaymentMethodToken" value="@Model.PaymentMethodToken" type="hidden"/>
+        }
+
+        <div class="control-group @Model.CssErrorFor(Model._FirstName)">
+            <label for="FirstName" class="control-label">First name</label>
+
+            <div class="controls">
+                <input id="FirstName" name="@Model._FirstName" value="@Model.FirstName" class="span5" type="text" />
+                <span class="help-inline">@Model.ErrorFor(Model._FirstName)</span>
+            </div>
+        </div>
+
+        <div class="control-group @Model.CssErrorFor(Model._LastName)">
+            <label for="LastName" class="control-label">Last name</label>
+
+            <div class="controls">
+                <input id="LastName" name="@Model._LastName" value="@Model.LastName" class="span5" type="text" />
+                <span class="help-inline">@Model.ErrorFor(Model._LastName)</span>
+            </div>
+        </div>
+
+        <div class="control-group @Model.CssErrorFor(Model._Email)">
+            <label for="Email" class="control-label">Email</label>
+
+            <div class="controls">
+                <input id="Email" name="@Model._Email" value="@Model.Email" class="span4" type="text" />
+                <span class="help-inline">@Model.ErrorFor(Model._Email)</span>
+            </div>
+        </div>
+
+        <div class="control-group @Model.CssErrorFor(Model._PhoneNumber)">
+            <label for="PhoneNumber" class="control-label">Phone Number</label>
+
+            <div class="controls">
+                <input id="PhoneNumber" name="@Model._PhoneNumber" value="@Model.PhoneNumber" class="span4" type="text" />
+                <span class="help-inline">@Model.ErrorFor(Model._PhoneNumber)</span>
+            </div>
+        </div>
+
+        <div class="control-group @Model.CssErrorFor(Model._Address1)">
+            <label for="Address1" class="control-label">Address Line 1</label>
+
+            <div class="controls">
+                <input id="Address1" name="@Model._Address1" value="@Model.Address1" class="span4" type="text" />
+                <span class="help-inline">@Model.ErrorFor(Model._Address1)</span>
+            </div>
+        </div>
+
+        <div class="control-group @Model.CssErrorFor(Model._Address2)">
+            <label for="Address2" class="control-label">Address Line 2</label>
+
+            <div class="controls">
+                <input id="Address2" name="@Model._Address2" value="@Model.Address2" class="span4" type="text" />
+                <span class="help-inline">@Model.ErrorFor(Model._Address2)</span>
+            </div>
+        </div>
+
+        <div class="control-group @Model.CssErrorFor(Model._City)">
+            <label for="City" class="control-label">City</label>
+
+            <div class="controls">
+                <input id="City" name="@Model._City" value="@Model.City" class="span3" type="text" />
+                <span class="help-inline">@Model.ErrorFor(Model._City)</span>
+            </div>
+        </div>
+
+        <div class="control-group @Model.CssErrorFor(Model._Zip)">
+            <label for="Zip" class="control-label">Postcode</label>
+
+            <div class="controls">
+                <input id="Zip" name="@Model._Zip" value="@Model.Zip" class="span2" type="text" />
+                <span class="help-inline">@Model.ErrorFor(Model._Zip)</span>
+            </div>
+        </div>
+
+        <div class="well">
+            <div class="control-group @Model.CssErrorFor(Model._Number)">
+                <label for="CreditCardNumber" class="control-label">Card Number</label>
+
+                <div class="controls">
+                    <input id="CreditCardNumber" name="@Model._Number" value="@Model.Number" class="span3" type="text" />
+                    <span class="help-inline">@Model.ErrorFor(Model._Number)</span>
+                    
+                </div>
+            </div> 
+
+            <div class="control-group @Model.CssErrorFor(Model._VerificationValue)">
+                <label for="SecurityCode" class="control-label">Security Code</label>
+
+                <div class="controls">
+                    <input id="SecurityCode" name="@Model._VerificationValue" value="@Model.VerificationValue" class="span1" type="text" />
+                    <span class="help-inline">@Model.ErrorFor(Model._VerificationValue)</span>
+                    <span class="help-block">Your 3 digit security number (on the back of your card)</span>
+                </div>
+            </div>
+
+            <div class="control-group @Model.CssErrorFor(Model._Month) @Model.CssErrorFor(Model._Year)">
+                <label class="control-label">Expiry Date</label>
+
+                <div class="controls">
+                    <input id="ExpiryMonth" name="@Model._Month" value="@Model.Month" class="span1" type="text" />
+                    <input id="ExpiryYear" name="@Model._Year" value="@Model.Year" class="span1" type="text" />
+                    <span class="help-inline">@Model.ErrorFor(Model._Month) @Model.ErrorFor(Model._Year)</span>
+                    <span class="help-block">Your expiry month (e.g. 03) and expiry year (e.g. 2013)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Submit Payment</button>
+        </div>
+    </form>
+</div>

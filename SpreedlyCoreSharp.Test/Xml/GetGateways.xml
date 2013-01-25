@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<gateways>
+  <gateway>
+    <token>token_goes_here</token>
+    <gateway_type>test</gateway_type>
+    <characteristics>
+      <supports_purchase type="boolean">true</supports_purchase>
+      <supports_authorize type="boolean">true</supports_authorize>
+      <supports_capture type="boolean">true</supports_capture>
+      <supports_credit type="boolean">true</supports_credit>
+      <supports_void type="boolean">true</supports_void>
+      <supports_reference_purchase type="boolean">true</supports_reference_purchase>
+      <supports_offsite_purchase type="boolean">true</supports_offsite_purchase>
+      <supports_offsite_authorize type="boolean">true</supports_offsite_authorize>
+      <supports_3dsecure_purchase type="boolean">true</supports_3dsecure_purchase>
+      <supports_3dsecure_authorize type="boolean">true</supports_3dsecure_authorize>
+    </characteristics>
+    <payment_methods>
+      <payment_method>credit_card</payment_method>
+      <payment_method>sprel</payment_method>
+    </payment_methods>
+    <redacted type="boolean">false</redacted>
+    <created_at type="datetime">2012-11-16T21:17:02Z</created_at>
+    <updated_at type="datetime">2012-11-16T21:17:02Z</updated_at>
+  </gateway>
+</gateways>

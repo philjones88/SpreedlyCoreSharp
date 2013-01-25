@@ -1,0 +1,47 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<System.Collections.Generic.List<SpreedlyCoreSharp.Domain.Transaction>>
+@{
+    ViewBag.Active = "Transaction";
+    Layout = "_Layout.cshtml";
+}
+
+<div class="span12">
+    <h1>Transactions (Count: @Model.Count)</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Created At</td>
+                <td>Token</td>
+                <td>Success?</td>
+                <td>Amount</td>
+                <td>Currency</td>
+                <td>Type</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var trans in Model)
+            {
+                <tr>
+                    <td>@trans.CreatedAt.ToString()</td>
+                    <td>@trans.Token</td>
+                    <td>@trans.Succeeded</td>
+                    <td>@trans.Amount</td>
+                    <td>@trans.CurrencyCode</td>
+                    <td>@trans.TransactionType</td>
+                    <td>
+                        <a href="/transactions/?since=@trans.Token">View From</a><br />
+                        <a href="/transactions/@trans.Token">View Details</a><br />
+                        <a href="/transactions/@trans.Token/transcript">View Transcript</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>Transactions ordered by created date (their default). Oldest are first.</p>
+
+    <p>Click a transaction token to use that as the start of paging (it is limited to 20 records at a time)</p>
+
+    <a href="/transactions">All Transactions</a>
+</div>
