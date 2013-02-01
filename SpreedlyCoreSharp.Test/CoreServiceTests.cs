@@ -26,6 +26,34 @@ namespace SpreedlyCoreSharp.Test
         }
 
         [Test]
+        public void posted_form_errors_deserialization()
+        {
+            var xmlpath = PathFor("TransactionErrors1.xml");
+
+            var actual = _service.Deserialize<TransactionErrors>(File.ReadAllText(xmlpath));
+
+            Assert.IsNotNull(actual);
+            Assert.AreEqual(1, actual.Errors.Count);
+            Assert.AreEqual("Test", actual.Errors[0].Message);
+            Assert.AreEqual("errors.one", actual.Errors[0].Key);
+        }
+
+        [Test]
+        public void posted_form_multiple_errors_deserialization()
+        {
+            var xmlpath = PathFor("TransactionErrorsMultiple.xml");
+
+            var actual = _service.Deserialize<TransactionErrors>(File.ReadAllText(xmlpath));
+
+            Assert.IsNotNull(actual);
+            Assert.AreEqual(2, actual.Errors.Count);
+            Assert.AreEqual("Test", actual.Errors[0].Message);
+            Assert.AreEqual("errors.one", actual.Errors[0].Key);
+            Assert.AreEqual("Test", actual.Errors[1].Message);
+            Assert.AreEqual("errors.two", actual.Errors[1].Key);
+        }
+
+        [Test]
         public void posted_form_failure_deserialization()
         {
             var xmlpath = PathFor("FailedFormPost.xml");

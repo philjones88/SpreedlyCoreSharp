@@ -182,6 +182,21 @@ namespace SpreedlyCoreSharp
 
             var stream = new MemoryStream(byteArray);
 
+            // Seems if you send absolutely nothing it decides to return <errors> rather than full <transaction> doc...
+            // Not sure how to append this to a Transaction document.
+            if (response.RawText.StartsWith("<errors>"))
+            {
+                var errors = (TransactionErrors) new XmlSerializer(typeof (TransactionErrors)).Deserialize(stream);
+
+                return new Transaction
+                {
+                    TransactionResponse = new Transaction.Response
+                    {
+                        Success = false
+                    }
+                };
+            }
+
             return (Transaction)new XmlSerializer(typeof(Transaction)).Deserialize(stream);
         }
     }

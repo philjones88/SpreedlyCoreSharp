@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="CoreService.cs" />
     <Compile Include="Domain\CurrencyCode.cs" />
+    <Compile Include="Domain\TransactionErrors.cs" />
     <Compile Include="Domain\TransactionTranscript.cs" />
     <Compile Include="Domain\TransactionType.cs" />
     <Compile Include="Html\TransactionViewModel.cs" />
