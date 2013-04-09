@@ -33,5 +33,6 @@ namespace SpreedlyCoreSharp
         List<Transaction> GetTransactions(string sinceToken = "");
         string GetTransactionTranscript(string token);
         Transaction ProcessPayment(ProcessPaymentRequest request);
+        bool ValidateTransactionSignature(string xml);
     }
 }

@@ -94,6 +94,10 @@
     <Content Include="Xml\ProcessPaymentRequest3DSecure.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Xml\SignedTransaction.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Xml\TransactionErrors1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

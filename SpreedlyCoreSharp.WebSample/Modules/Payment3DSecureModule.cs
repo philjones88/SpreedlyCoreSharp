@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.IO;
 using Nancy;
 using SpreedlyCoreSharp.Domain;
 using SpreedlyCoreSharp.Html;
@@ -8,7 +9,8 @@ namespace SpreedlyCoreSharp.WebSample.Modules
 {
     public class Payment3DSecureModule : NancyModule
     {
-        public Payment3DSecureModule(ICoreService service): base("/3d-secure")
+        public Payment3DSecureModule(ICoreService service)
+            : base("/3d-secure")
         {
             Get["/"] = parameters =>
             {
@@ -75,7 +77,18 @@ namespace SpreedlyCoreSharp.WebSample.Modules
             // Callback after 3d secure, happens if something goes wrong/cancels also
             Post["/callback"] = parameters =>
             {
-                return "Pingback for token: " + Request.Query.token;
+                var xmlBody = new StreamReader(Request.Body).ReadToEnd();
+
+                if (service.ValidateTransactionSignature(xmlBody))
+                {
+                    var transaction = service.Deserialize<Transaction>(xmlBody);
+
+                    var token = transaction.Token;
+
+                    // Do stuff in your database
+                }              
+
+                return "Pingback";
             };
         }
     }

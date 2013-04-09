@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace SpreedlyCoreSharp.Domain
@@ -86,7 +87,7 @@ namespace SpreedlyCoreSharp.Domain
 
             [XmlArray("errors")]
             [XmlArrayItem("error")]
-            public List<Error> Errors { get; set; } 
+            public List<Error> Errors { get; set; }
 
             public object Data { get; set; }
         }
@@ -193,6 +194,26 @@ namespace SpreedlyCoreSharp.Domain
             public DateTime UpdatedAt { get; set; }
         }
 
+        public class SignedResponse
+        {
+            [XmlElement("signature")]
+            public string Signature { get; set; }
+
+            [XmlElement("fields")]
+            public string RawFields { get; set; }
+
+            public List<string> Fields
+            {
+                get
+                {
+                    return string.IsNullOrWhiteSpace(RawFields) ? new List<string>() : RawFields.Split(' ').ToList();
+                }
+            }
+
+            [XmlElement("algorithm")]
+            public string Algorithm { get; set; }
+        }
+
         [XmlElement("token")]
         public string Token { get; set; }
 
@@ -249,6 +270,9 @@ namespace SpreedlyCoreSharp.Domain
 
         [XmlElement("redirect_response")]
         public RedirectResponse TransactionRedirectResponse { get; set; }
+
+        [XmlElement("signed")]
+        public SignedResponse Signed { get; set; }
 
         [XmlArray(ElementName = "api_urls")]
         [XmlArrayItem(ElementName = "callback_conversations")]

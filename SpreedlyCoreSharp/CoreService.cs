@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
+using System.Security.Cryptography;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 using EasyHttp.Http;
-using EasyHttp.Infrastructure;
 using SpreedlyCoreSharp.Domain;
 using SpreedlyCoreSharp.Request;
 using SpreedlyCoreSharp.Response;
@@ -153,7 +153,7 @@ namespace SpreedlyCoreSharp
             var responseObject = (GetTransactionsResponse)new XmlSerializer(typeof(GetTransactionsResponse)).Deserialize(stream);
 
             return responseObject.Transactions;
-        } 
+        }
 
         public string GetTransactionTranscript(string token)
         {
@@ -175,7 +175,7 @@ namespace SpreedlyCoreSharp
 
             if (request.Attempt3DSecure && string.IsNullOrWhiteSpace(request.RedirectUrl))
             {
-                throw new ArgumentException("Redirect URL cannot be empty");
+                throw new ArgumentException("Redirect URL cannot be empty.");
             }
 
             byte[] byteArray = Encoding.ASCII.GetBytes(response.RawText);
@@ -186,7 +186,7 @@ namespace SpreedlyCoreSharp
             // Not sure how to append this to a Transaction document.
             if (response.RawText.StartsWith("<errors>"))
             {
-                var errors = (TransactionErrors) new XmlSerializer(typeof (TransactionErrors)).Deserialize(stream);
+                var errors = (TransactionErrors)new XmlSerializer(typeof(TransactionErrors)).Deserialize(stream);
 
                 return new Transaction
                 {
@@ -197,7 +197,94 @@ namespace SpreedlyCoreSharp
                 };
             }
 
-            return (Transaction)new XmlSerializer(typeof(Transaction)).Deserialize(stream);
+            return Deserialize<Transaction>(response.RawText);
+        }
+
+        /// <summary>
+        /// Validates a transaction with a signature
+        /// </summary>
+        /// <param name="transactionXml"></param>
+        /// <returns></returns>
+        public bool ValidateTransactionSignature(string transactionXml)
+        {
+            // Translation of ruby code to C# from manual:
+            // https://core.spreedly.com/manual/signing
+
+            var doc = new XmlDocument();
+
+            doc.LoadXml(transactionXml);
+
+            // If xml is empty return false, something is wrong
+            if (doc.DocumentElement == null)
+            {
+                return false;
+            }
+
+            var signedNode = doc.DocumentElement.SelectSingleNode("signed");
+
+            // If xml doesn't have a signed element return false.
+            // Undecided if this is final behaviour as might cause problems when
+            // transactions don't have a signed xml node
+            if (signedNode == null)
+            {
+                return false;
+            }
+
+            var signatureNode = signedNode.SelectSingleNode("signature");
+            var signature = "";
+
+            if (signatureNode != null)
+            {
+                signature = signatureNode.InnerText;
+            }
+
+            // Check we know what algorithm they are using, sample data indicated SHA1 only
+            var algorithmNode = signedNode.SelectSingleNode("algorithm");
+            var algorithm = "sha1";
+
+            if (algorithmNode != null)
+            {
+                algorithm = algorithmNode.InnerText;
+            }
+
+            if (algorithm.Trim().ToUpper() != "SHA1")
+            {
+                throw new ArgumentException("Unknown transaction signature algorithm.");
+            }
+
+            var fieldsMushed = "";
+            var signedFields = "";
+            var signedFieldsNode = signedNode.SelectSingleNode("fields");
+
+            if (signedFieldsNode != null)
+            {
+                signedFields = signedFieldsNode.InnerText;
+            }
+
+            foreach (var item in signedFields.Split(' '))
+            {
+                if (string.IsNullOrWhiteSpace(item))
+                    continue;
+
+                var node = doc.DocumentElement.SelectSingleNode(item);
+
+                if (node != null)
+                {
+                    fieldsMushed += node.InnerText + "|";
+                }
+            }
+
+            fieldsMushed = fieldsMushed.Substring(0, fieldsMushed.Length - 1);
+
+            var myhmacsha1 = new HMACSHA1(Encoding.ASCII.GetBytes(APISecret));
+
+            var byteArray = Encoding.ASCII.GetBytes(fieldsMushed);
+
+            var stream = new MemoryStream(byteArray);
+
+            var result = myhmacsha1.ComputeHash(stream).Aggregate("", (s, e) => s + String.Format("{0:x2}", e), s => s);
+
+            return result == signature;
         }
     }
 }

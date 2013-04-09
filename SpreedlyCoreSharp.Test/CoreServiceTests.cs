@@ -326,5 +326,31 @@ namespace SpreedlyCoreSharp.Test
             Assert.AreEqual("http://example.com/handle_redirect", actual.RedirectUrl);
             Assert.AreEqual("http://example.com/handle_callback", actual.CallbackUrl);
         }
+
+        [Test]
+        public void SignedTransaction_Deserialization()
+        {
+            var xmlpath = PathFor("SignedTransaction.xml");
+
+            var actual = _service.Deserialize<Transaction>(File.ReadAllText(xmlpath));
+
+            Assert.IsNotNull(actual);
+            Assert.AreEqual("b81436daf0d695404c5bf7a2aecf049d460bb6e1", actual.Signed.Signature);
+            Assert.AreEqual("amount callback_url created_at currency_code ip on_test_gateway order_id state succeeded token transaction_type updated_at", actual.Signed.RawFields);
+            Assert.AreEqual(new List<string> { "amount","callback_url", "created_at", "currency_code", "ip", "on_test_gateway", "order_id", "state", "succeeded", "token", "transaction_type", "updated_at" }, actual.Signed.Fields);
+            Assert.AreEqual("sha1", actual.Signed.Algorithm);
+        }
+
+        [Test]
+        public void SignedTransaction()
+        {
+            var transactionXml = File.ReadAllText(PathFor("SignedTransaction.xml"));
+
+            _service = new CoreService("", "RKOCG5D8D3fZxDSg504D0IxU2XD4Io5VXmyzdCtTivHFTTSylzM2ZzTWFwVH4ucG", "");
+
+            var result = _service.ValidateTransactionSignature(transactionXml);
+
+            Assert.AreEqual(true, result);
+        }
     }
 }
