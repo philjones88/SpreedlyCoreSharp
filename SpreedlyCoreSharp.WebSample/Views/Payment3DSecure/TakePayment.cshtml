@@ -9,6 +9,16 @@
 
     <p>Use the test card datea from: <a href="https://spreedlycore.com/manual/test-data">here</a> (Use 3D Secure cards on this form)</p>
 
+    @if (!Model.Succeeded)
+    {
+        <p>Your transaction was rejected by our secure payment gateway.</p>
+        
+        if (!string.IsNullOrWhiteSpace(Model.Message))
+        {
+        <p>Our provider gave the following message: @Model.Message</p>
+        }
+    }
+
     <form action="https://spreedlycore.com/v1/payment_methods" method="POST" class="form-horizontal">
         <input name="@Model._RedirectUrl" type="hidden" value="@Model.RedirectUrl" />
 
@@ -98,9 +108,9 @@
                 <div class="controls">
                     <input id="CreditCardNumber" name="@Model._Number" value="@Model.Number" class="span3" type="text" />
                     <span class="help-inline">@Model.ErrorFor(Model._Number)</span>
-                    
+
                 </div>
-            </div> 
+            </div>
 
             <div class="control-group @Model.CssErrorFor(Model._VerificationValue)">
                 <label for="SecurityCode" class="control-label">Security Code</label>

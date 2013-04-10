@@ -6,6 +6,11 @@ namespace SpreedlyCoreSharp.Html
 {
     public class TransactionViewModel
     {
+        public TransactionViewModel()
+        {
+            Succeeded = true;
+        }
+
         // To save having to install AutoMapper
         public void PopulateFromTransaction(Transaction transaction, string redirectUrl, string apiLogin)
         {
@@ -30,6 +35,8 @@ namespace SpreedlyCoreSharp.Html
             VerificationValue = transaction.TransactionPaymentMethod.VerificationValue;
             Month = transaction.TransactionPaymentMethod.Month;
             Year = transaction.TransactionPaymentMethod.Year;
+            Succeeded = transaction.Succeeded;
+            Message = transaction.Message;
             Errors = transaction.TransactionPaymentMethod.Errors;
         }
 
@@ -132,6 +139,10 @@ namespace SpreedlyCoreSharp.Html
         public string Country { get; set; }
         
         public string PhoneNumber { get; set; }
+
+        public bool Succeeded { get; set; }
+
+        public string Message { get; set; }
 
         public List<Transaction.PaymentMethod.Error> Errors { get; set; }
     }
