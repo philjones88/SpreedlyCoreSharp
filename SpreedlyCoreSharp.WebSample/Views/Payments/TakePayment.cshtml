@@ -98,9 +98,9 @@
                 <div class="controls">
                     <input id="CreditCardNumber" name="@Model._Number" value="@Model.Number" class="span3" type="text" />
                     <span class="help-inline">@Model.ErrorFor(Model._Number)</span>
-                    
+
                 </div>
-            </div> 
+            </div>
 
             <div class="control-group @Model.CssErrorFor(Model._VerificationValue)">
                 <label for="SecurityCode" class="control-label">Security Code</label>
@@ -116,10 +116,31 @@
                 <label class="control-label">Expiry Date</label>
 
                 <div class="controls">
-                    <input id="ExpiryMonth" name="@Model._Month" value="@Model.Month" class="span1" type="text" />
-                    <input id="ExpiryYear" name="@Model._Year" value="@Model.Year" class="span1" type="text" />
+                    <select id="ExpiryMonth" name="@Model._Month" class="input-small @Model.CssErrorFor(Model._Month)">
+                        @for (int i = 1; i <= 12; i++)
+                        {
+                            if (i == Model.Month)
+                            {
+                            <option selected="selected">@i</option>
+                            }
+                    
+                            <option>@i</option>
+                        }
+                    </select>
+
+                    <select  id="ExpiryYear" name="@Model._Year" class="input-small @Model.CssErrorFor(Model._Year)">
+                        @{
+                            var currentYear = System.DateTime.Now.Year - 1;
+                        }
+                        @for (int i = 0; i <= 20; i++)
+                        {
+                            currentYear++;
+                            <option>@currentYear</option>
+                        }
+                    </select>
+
                     <span class="help-inline">@Model.ErrorFor(Model._Month) @Model.ErrorFor(Model._Year)</span>
-                    <span class="help-block">Your expiry month (e.g. 03) and expiry year (e.g. 2013)</span>
+                    <span class="help-block">Your card's expiry date.</span>
                 </div>
             </div>
         </div>
