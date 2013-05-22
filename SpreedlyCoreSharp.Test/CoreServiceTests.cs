@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using NUnit.Framework;
 using SpreedlyCoreSharp.Domain;
 using SpreedlyCoreSharp.Request;
@@ -337,12 +338,27 @@ namespace SpreedlyCoreSharp.Test
             Assert.IsNotNull(actual);
             Assert.AreEqual("b81436daf0d695404c5bf7a2aecf049d460bb6e1", actual.Signed.Signature);
             Assert.AreEqual("amount callback_url created_at currency_code ip on_test_gateway order_id state succeeded token transaction_type updated_at", actual.Signed.RawFields);
-            Assert.AreEqual(new List<string> { "amount","callback_url", "created_at", "currency_code", "ip", "on_test_gateway", "order_id", "state", "succeeded", "token", "transaction_type", "updated_at" }, actual.Signed.Fields);
+            Assert.AreEqual(new List<string> { "amount", "callback_url", "created_at", "currency_code", "ip", "on_test_gateway", "order_id", "state", "succeeded", "token", "transaction_type", "updated_at" }, actual.Signed.Fields);
             Assert.AreEqual("sha1", actual.Signed.Algorithm);
         }
 
         [Test]
-        public void SignedTransaction()
+        public void SignedTransactions_Deserialization()
+        {
+            var xmlpath = PathFor("SignedTransactions.xml");
+
+            var actual = _service.DeserializeTransactions(File.ReadAllText(xmlpath)).ToList();
+
+            Assert.IsNotNull(actual);
+            Assert.AreEqual(2, actual.Count);
+            Assert.AreEqual(100, actual[0].Amount);
+            Assert.IsNotNullOrEmpty(actual[0].RawTransactionXml);
+            Assert.AreEqual(100, actual[1].Amount);
+            Assert.IsNotNullOrEmpty(actual[1].RawTransactionXml);
+        }
+
+        [Test]
+        public void SignedTransaction_Xml()
         {
             var transactionXml = File.ReadAllText(PathFor("SignedTransaction.xml"));
 
@@ -350,7 +366,21 @@ namespace SpreedlyCoreSharp.Test
 
             var result = _service.ValidateTransactionSignature(transactionXml);
 
-            Assert.AreEqual(true, result);
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void SignedTransaction_Transaction()
+        {
+            var xmlpath = PathFor("SignedTransaction.xml");
+
+            _service = new CoreService("", "RKOCG5D8D3fZxDSg504D0IxU2XD4Io5VXmyzdCtTivHFTTSylzM2ZzTWFwVH4ucG", "");
+
+            var transaction = _service.Deserialize<Transaction>(File.ReadAllText(xmlpath));
+
+            var actual = _service.ValidateTransactionSignature(transaction);
+
+            Assert.IsTrue(actual);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.IO;
+using System.Linq;
 using Nancy;
 using SpreedlyCoreSharp.Domain;
 using SpreedlyCoreSharp.Html;
@@ -79,14 +80,26 @@ namespace SpreedlyCoreSharp.WebSample.Modules
             {
                 var xmlBody = new StreamReader(Request.Body).ReadToEnd();
 
-                if (service.ValidateTransactionSignature(xmlBody))
+                var transactions = service.DeserializeTransactions(xmlBody).ToList();
+
+                if (!transactions.Any())
+                    return "Pingback";
+
+                foreach (var transaction in transactions)
                 {
-                    var transaction = service.Deserialize<Transaction>(xmlBody);
+                    if (service.ValidateTransactionSignature(transaction))
+                    {
+                        var token = transaction.Token;
 
-                    var token = transaction.Token;
+                        // Do stuff in your database
+                    }
+                    else
+                    {
+                        var token = transaction.Token;
 
-                    // Do stuff in your database
-                }              
+                        // Perhaps log we have an invalid transaction
+                    }
+                }
 
                 return "Pingback";
             };

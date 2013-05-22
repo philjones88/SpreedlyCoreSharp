@@ -287,5 +287,10 @@ namespace SpreedlyCoreSharp.Domain
 
         [XmlElement("description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// The raw XML for this Transaction
+        /// </summary>
+        public string RawTransactionXml { get; set; }
     }
 }

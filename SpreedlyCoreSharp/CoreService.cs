@@ -51,6 +51,24 @@ namespace SpreedlyCoreSharp
             _client.Request.Accept = HttpContentTypes.ApplicationXml;
         }
 
+        public IEnumerable<Transaction> DeserializeTransactions(string xml)
+        {
+            var doc = new XmlDocument();
+
+            doc.LoadXml(xml);
+
+            if (doc.DocumentElement == null) yield break;
+
+            var nodes = doc.DocumentElement.SelectNodes("transaction");
+
+            if (nodes == null) yield break;
+
+            foreach (XmlNode node in nodes)
+            {
+                yield return Deserialize<Transaction>(node.OuterXml);
+            }
+        } 
+
         /// <summary>
         /// Turns an XML string into T
         /// </summary>
@@ -63,7 +81,14 @@ namespace SpreedlyCoreSharp
 
             var serializer = new XmlSerializer(typeof(T));
 
-            return (T)serializer.Deserialize(stream);
+            var obj = (T) serializer.Deserialize(stream);
+
+            if (typeof(T) == typeof(Transaction))
+            {
+                obj.GetType().GetProperty("RawTransactionXml").SetValue(obj, xml);
+            }
+
+            return obj;
         }
 
         /// <summary>
@@ -203,7 +228,17 @@ namespace SpreedlyCoreSharp
         /// <summary>
         /// Validates a transaction with a signature
         /// </summary>
-        /// <param name="transactionXml"></param>
+        /// <param name="transaction">Transaction</param>
+        /// <returns></returns>
+        public bool ValidateTransactionSignature(Transaction transaction)
+        {
+            return ValidateTransactionSignature(transaction.RawTransactionXml);
+        }
+
+        /// <summary>
+        /// Validates a transaction with a signature
+        /// </summary>
+        /// <param name="transactionXml">Transaction xml</param>
         /// <returns></returns>
         public bool ValidateTransactionSignature(string transactionXml)
         {

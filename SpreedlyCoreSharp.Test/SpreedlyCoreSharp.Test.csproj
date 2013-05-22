@@ -98,6 +98,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Xml\SignedTransactions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Xml\TransactionErrors1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

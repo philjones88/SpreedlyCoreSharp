@@ -11,6 +11,13 @@ namespace SpreedlyCoreSharp
         string GatewayToken { get; }
 
         /// <summary>
+        /// Turns an XML array of Transactions into IEnumerable of Transactions
+        /// </summary>
+        /// <param name="xml"></param>
+        /// <returns></returns>
+        IEnumerable<Transaction> DeserializeTransactions(string xml);
+            
+        /// <summary>
         /// Turns an XML string into T
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -33,6 +40,7 @@ namespace SpreedlyCoreSharp
         List<Transaction> GetTransactions(string sinceToken = "");
         string GetTransactionTranscript(string token);
         Transaction ProcessPayment(ProcessPaymentRequest request);
+        bool ValidateTransactionSignature(Transaction transaction);
         bool ValidateTransactionSignature(string xml);
     }
 }
