@@ -382,5 +382,22 @@ namespace SpreedlyCoreSharp.Test
 
             Assert.IsTrue(actual);
         }
+
+        [Test]
+        public void SignedTransactions_Transaction()
+        {
+            var xmlpath = PathFor("SignedTransactions.xml");
+
+            _service = new CoreService("", "RKOCG5D8D3fZxDSg504D0IxU2XD4Io5VXmyzdCtTivHFTTSylzM2ZzTWFwVH4ucG", "");
+
+            var transactions = _service.DeserializeTransactions(File.ReadAllText(xmlpath));
+
+            foreach (var transaction in transactions)
+            {
+                var actual = _service.ValidateTransactionSignature(transaction);
+
+                Assert.IsTrue(actual);
+            }
+        }
     }
 }
