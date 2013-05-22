@@ -12,7 +12,7 @@ namespace SpreedlyCoreSharp.Test
         [TestFixtureSetUp]
         public void Setup()
         {
-            _service = new CoreService("", "", "");
+            _service = new CoreService("", "", "", "");
         }
 
         [Test]

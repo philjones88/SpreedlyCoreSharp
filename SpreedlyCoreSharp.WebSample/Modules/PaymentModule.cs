@@ -14,7 +14,7 @@ namespace SpreedlyCoreSharp.WebSample.Modules
             {
                 return View["Payments/TakePayment", new TransactionViewModel()
                 {
-                    ApiLogin = service.APILogin,
+                    ApiEnvironment = service.APIEnvironment,
                     RedirectUrl = ConfigurationManager.AppSettings["PublicWebUrl"] + "/payment/redirect-back"
                 }];
             };
@@ -35,7 +35,7 @@ namespace SpreedlyCoreSharp.WebSample.Modules
 
                 var viewModel = new TransactionViewModel();
 
-                viewModel.PopulateFromTransaction(transaction, ConfigurationManager.AppSettings["PublicWebUrl"] + "/payment/redirect-back", service.APILogin);
+                viewModel.PopulateFromTransaction(transaction, ConfigurationManager.AppSettings["PublicWebUrl"] + "/payment/redirect-back", service.APIEnvironment);
 
                 return View["Payments/TakePayment", viewModel];
             };

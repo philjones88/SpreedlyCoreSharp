@@ -13,8 +13,9 @@ namespace SpreedlyCoreSharp.WebSample
             base.ApplicationStartup(container, pipelines);
 
             container.Register<ICoreService>(new CoreService(
-                    ConfigurationManager.AppSettings["APILogin"],
+                    ConfigurationManager.AppSettings["APIEnvironment"],
                     ConfigurationManager.AppSettings["APISecret"],
+                    ConfigurationManager.AppSettings["APISigningSecret"],
                     ConfigurationManager.AppSettings["GatewayToken"])
             );
         }

@@ -6,8 +6,9 @@ namespace SpreedlyCoreSharp
 {
     public interface ICoreService
     {
-        string APILogin { get; }
+        string APIEnvironment { get; }
         string APISecret { get; }
+        string APISigningSecret { get; }
         string GatewayToken { get; }
 
         /// <summary>

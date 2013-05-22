@@ -23,7 +23,7 @@ namespace SpreedlyCoreSharp.Test
         [TestFixtureSetUp]
         public void Setup()
         {
-            _service = new CoreService("", "", "");
+            _service = new CoreService("", "", "", "");
         }
 
         [Test]
@@ -362,7 +362,7 @@ namespace SpreedlyCoreSharp.Test
         {
             var transactionXml = File.ReadAllText(PathFor("SignedTransaction.xml"));
 
-            _service = new CoreService("", "RKOCG5D8D3fZxDSg504D0IxU2XD4Io5VXmyzdCtTivHFTTSylzM2ZzTWFwVH4ucG", "");
+            _service = new CoreService("", "", "RKOCG5D8D3fZxDSg504D0IxU2XD4Io5VXmyzdCtTivHFTTSylzM2ZzTWFwVH4ucG", "");
 
             var result = _service.ValidateTransactionSignature(transactionXml);
 
@@ -374,7 +374,7 @@ namespace SpreedlyCoreSharp.Test
         {
             var xmlpath = PathFor("SignedTransaction.xml");
 
-            _service = new CoreService("", "RKOCG5D8D3fZxDSg504D0IxU2XD4Io5VXmyzdCtTivHFTTSylzM2ZzTWFwVH4ucG", "");
+            _service = new CoreService("", "", "RKOCG5D8D3fZxDSg504D0IxU2XD4Io5VXmyzdCtTivHFTTSylzM2ZzTWFwVH4ucG", "");
 
             var transaction = _service.Deserialize<Transaction>(File.ReadAllText(xmlpath));
 
@@ -388,7 +388,7 @@ namespace SpreedlyCoreSharp.Test
         {
             var xmlpath = PathFor("SignedTransactions.xml");
 
-            _service = new CoreService("", "RKOCG5D8D3fZxDSg504D0IxU2XD4Io5VXmyzdCtTivHFTTSylzM2ZzTWFwVH4ucG", "");
+            _service = new CoreService("", "", "RKOCG5D8D3fZxDSg504D0IxU2XD4Io5VXmyzdCtTivHFTTSylzM2ZzTWFwVH4ucG", "");
 
             var transactions = _service.DeserializeTransactions(File.ReadAllText(xmlpath));
 

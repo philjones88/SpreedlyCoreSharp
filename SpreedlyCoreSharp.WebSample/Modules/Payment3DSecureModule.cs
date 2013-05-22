@@ -17,7 +17,7 @@ namespace SpreedlyCoreSharp.WebSample.Modules
             {
                 return View["TakePayment", new TransactionViewModel()
                 {
-                    ApiLogin = service.APILogin,
+                    ApiEnvironment = service.APIEnvironment,
                     RedirectUrl = ConfigurationManager.AppSettings["PublicWebUrl"] + "/3d-secure/redirect"
                 }];
             };
@@ -53,7 +53,7 @@ namespace SpreedlyCoreSharp.WebSample.Modules
 
                 var viewModel = new TransactionViewModel();
 
-                viewModel.PopulateFromTransaction(transaction, ConfigurationManager.AppSettings["PublicWebUrl"] + "/3d-secure/redirect", service.APILogin);
+                viewModel.PopulateFromTransaction(transaction, ConfigurationManager.AppSettings["PublicWebUrl"] + "/3d-secure/redirect", service.APIEnvironment);
 
                 return View["TakePayment", viewModel];
             };
@@ -70,7 +70,7 @@ namespace SpreedlyCoreSharp.WebSample.Modules
 
                 var viewModel = new TransactionViewModel();
 
-                viewModel.PopulateFromTransaction(transaction, ConfigurationManager.AppSettings["PublicWebUrl"] + "/3d-secure/redirect", service.APILogin);
+                viewModel.PopulateFromTransaction(transaction, ConfigurationManager.AppSettings["PublicWebUrl"] + "/3d-secure/redirect", service.APIEnvironment);
 
                 return View["TakePayment", viewModel];
             };

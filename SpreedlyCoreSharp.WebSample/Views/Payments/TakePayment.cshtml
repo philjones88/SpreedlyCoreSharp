@@ -12,7 +12,7 @@
     <form action="https://spreedlycore.com/v1/payment_methods" method="POST" class="form-horizontal">
         <input name="@Model._RedirectUrl" type="hidden" value="@Model.RedirectUrl" />
 
-        <input name="@Model._ApiLogin" type="hidden" value="@Model.ApiLogin" />
+        <input name="@Model._ApiLogin" type="hidden" value="@Model.ApiEnvironment" />
 
         @if (!string.IsNullOrEmpty(Model.PaymentMethodToken))
         {

@@ -17,7 +17,7 @@ namespace SpreedlyCoreSharp.Html
             if (transaction == null || transaction.TransactionPaymentMethod == null)
                 return;
 
-            ApiLogin = apiLogin;
+            ApiEnvironment = apiLogin;
             RedirectUrl = redirectUrl;
             PaymentMethodToken = transaction.TransactionPaymentMethod.Token;
 
@@ -108,7 +108,7 @@ namespace SpreedlyCoreSharp.Html
 
         public string RedirectUrl { get; set; }
 
-        public string ApiLogin { get; set; }
+        public string ApiEnvironment { get; set; }
 
         public string PaymentMethodToken { get; set; }
 

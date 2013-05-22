@@ -25,29 +25,33 @@ namespace SpreedlyCoreSharp
 
         private readonly HttpClient _client;
 
-        private readonly string _apiLogin;
+        private readonly string _apiEnvironment;
         private readonly string _apiSecret;
+        private readonly string _apiSigningSecret;
         private readonly string _gatewayToken;
 
-        public string APILogin { get { return _apiLogin; } }
+        public string APIEnvironment { get { return _apiEnvironment; } }
         public string APISecret { get { return _apiSecret; } }
+        public string APISigningSecret { get { return _apiSigningSecret; } }
         public string GatewayToken { get { return _gatewayToken; } }
 
-        internal CoreService(HttpClient client, string apiLogin, string apiSecret)
+        internal CoreService(HttpClient client, string apiEnvironment, string apiSecret, string apiSigningSecret)
         {
-            _apiLogin = apiLogin;
+            _apiEnvironment = apiEnvironment;
             _apiSecret = apiSecret;
+            _apiSigningSecret = apiSigningSecret;
             _client = client;
         }
 
-        public CoreService(string apiLogin, string apiSecret, string gatewayToken)
+        public CoreService(string apiEnvironment, string apiSecret, string apiSigningSecret, string gatewayToken)
         {
-            _apiLogin = apiLogin;
+            _apiEnvironment = apiEnvironment;
             _apiSecret = apiSecret;
+            _apiSigningSecret = apiSigningSecret;
             _gatewayToken = gatewayToken;
 
             _client = new HttpClient();
-            _client.Request.SetBasicAuthentication(_apiLogin, _apiSecret);
+            _client.Request.SetBasicAuthentication(_apiEnvironment, _apiSecret);
             _client.Request.Accept = HttpContentTypes.ApplicationXml;
         }
 
@@ -67,7 +71,7 @@ namespace SpreedlyCoreSharp
             {
                 yield return Deserialize<Transaction>(node.OuterXml);
             }
-        } 
+        }
 
         /// <summary>
         /// Turns an XML string into T
@@ -81,7 +85,7 @@ namespace SpreedlyCoreSharp
 
             var serializer = new XmlSerializer(typeof(T));
 
-            var obj = (T) serializer.Deserialize(stream);
+            var obj = (T)serializer.Deserialize(stream);
 
             if (typeof(T) == typeof(Transaction))
             {
@@ -305,13 +309,13 @@ namespace SpreedlyCoreSharp
 
                 if (node != null)
                 {
-                    fieldsMushed += node.InnerText + "|";
+                    fieldsMushed += node.InnerText + "|"; 
                 }
             }
 
             fieldsMushed = fieldsMushed.Substring(0, fieldsMushed.Length - 1);
 
-            var myhmacsha1 = new HMACSHA1(Encoding.ASCII.GetBytes(APISecret));
+            var myhmacsha1 = new HMACSHA1(Encoding.ASCII.GetBytes(APISigningSecret));
 
             var byteArray = Encoding.ASCII.GetBytes(fieldsMushed);
 
