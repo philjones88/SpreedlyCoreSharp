@@ -102,7 +102,7 @@ namespace SpreedlyCoreSharp.Test
             Assert.AreEqual("transaction1_payment_token", paymentMethod.Token);
             Assert.AreEqual(new DateTime(2012, 11, 16, 20, 36, 03), paymentMethod.CreatedAt);
             Assert.AreEqual(new DateTime(2012, 11, 16, 20, 36, 04), paymentMethod.UpdatedAt);
-            Assert.AreEqual(3886, paymentMethod.LastFourDigits);
+            Assert.AreEqual("3886", paymentMethod.LastFourDigits);
             Assert.AreEqual("visa", paymentMethod.CardType);
             Assert.AreEqual("Bob", paymentMethod.FirstName);
             Assert.AreEqual("Smith", paymentMethod.LastName);
@@ -141,7 +141,7 @@ namespace SpreedlyCoreSharp.Test
             Assert.AreEqual("PJH85K9VZ2iTgqPr2yoafwjEewG", transaction.TransactionPaymentMethod.Token);
             Assert.AreEqual(new DateTime(2012, 11, 09, 14, 05, 56), transaction.TransactionPaymentMethod.CreatedAt);
             Assert.AreEqual(new DateTime(2012, 11, 26, 21, 34, 19), transaction.TransactionPaymentMethod.UpdatedAt);
-            Assert.AreEqual(1111, transaction.TransactionPaymentMethod.LastFourDigits);
+            Assert.AreEqual("1111", transaction.TransactionPaymentMethod.LastFourDigits);
             Assert.AreEqual("visa", transaction.TransactionPaymentMethod.CardType);
             Assert.AreEqual("Juvenal", transaction.TransactionPaymentMethod.FirstName);
             Assert.AreEqual("Volkman", transaction.TransactionPaymentMethod.LastName);
@@ -398,6 +398,38 @@ namespace SpreedlyCoreSharp.Test
 
                 Assert.IsTrue(actual);
             }
+        }
+
+        [Test]
+        public void Transaction_AmountInDecimal_SetsCorrectly()
+        {
+            var transaction = new Transaction { AmountInDecimal = 3.45m };
+
+            Assert.AreEqual(345, transaction.Amount);
+        }
+
+        [Test]
+        public void Transaction_AmountInDecimal_SetZero()
+        {
+            var transaction = new Transaction { AmountInDecimal = 0 };
+
+            Assert.AreEqual(0, transaction.Amount);
+        }
+
+        [Test]
+        public void Transaction_AmountInDecimal_GetCorrectly()
+        {
+            var transaction = new Transaction { Amount = 3495 };
+            
+            Assert.AreEqual(34.95, transaction.AmountInDecimal);
+        }
+
+        [Test]
+        public void Transaction_AmountInDecimal_GetsZero()
+        {
+            var transaction = new Transaction {  Amount = 0 };
+
+            Assert.AreEqual(0, transaction.AmountInDecimal);
         }
     }
 }
