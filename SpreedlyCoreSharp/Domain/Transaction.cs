@@ -36,7 +36,7 @@ namespace SpreedlyCoreSharp.Domain
             public string PaymentMethodType { get; set; }
 
             [XmlElement("last_four_digits")]
-            public int LastFourDigits { get; set; }
+            public string LastFourDigits { get; set; }
 
             [XmlElement("number")]
             public string Number { get; set; }
