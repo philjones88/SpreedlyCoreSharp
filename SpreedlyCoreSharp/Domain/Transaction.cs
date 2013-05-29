@@ -220,8 +220,28 @@ namespace SpreedlyCoreSharp.Domain
         [XmlElement("gateway_token")]
         public string GatewayToken { get; set; }
 
+        /// <summary>
+        /// Amount to charge in cents, pence etc. $83.45 means 8345
+        /// </summary>
         [XmlElement("amount")]
-        public decimal Amount { get; set; }
+        public int Amount { get; set; }
+
+        [XmlIgnore]
+        public decimal AmountInDecimal
+        {
+            get
+            {
+                if (Amount > 0)
+                    return Amount / (decimal)100;
+
+                return 0;
+            }
+            set
+            {
+                if (value > 0)
+                    Amount = (int) (value * 100);
+            }
+        }
 
         [XmlElement("currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
