@@ -12,6 +12,8 @@
         AddPaymentMethod,
         RetainPaymentMethod,
         RedactPaymentMethod,
-        Void
+        Void,
+        AddGateway,
+        RedactGateway
     }
 }
