@@ -18,6 +18,13 @@ namespace SpreedlyCoreSharp.WebSample.Modules
             Get["/add-test-gateway"] = _ =>
                 {
                     service.AddGateway(new AddTestGatewayRequest { GatewayType = "test" });
+                    
+                    return new RedirectResponse("/gateways");
+                };
+
+            Get["/redact/{token}"] = parameters =>
+                {
+                    service.RedactGateway((string) parameters.token);
 
                     return new RedirectResponse("/gateways");
                 };

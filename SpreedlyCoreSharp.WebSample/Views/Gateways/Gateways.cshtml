@@ -12,13 +12,14 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <td>Token</td>
-                <td>Type</td>
-                <td>Redacted?</td>
-                <td>3D Auth?</td>
-                <td>3D Purchase?</td>
-                <td>Created</td>
-                <td>Updated</td>
+                <th>Token</th>
+                <th>Type</th>
+                <th>Redacted?</th>
+                <th>3D Auth?</th>
+                <th>3D Purchase?</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,9 @@
                     <td>@gateway.GatewayCharacteristics.Supports3DSecurePurchase</td>
                     <td>@gateway.CreatedAt</td>
                     <td>@gateway.UpdatedAt</td>
+                    <td>
+                        <a href="/gateways/redact/@gateway.Token" class="btn btn-danger" onclick="return confirm('Are you sure, redacting a gateway is permenant.')">Redact</a>
+                    </td>
                 </tr>
             }
         </tbody>
