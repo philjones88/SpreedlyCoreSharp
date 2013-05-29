@@ -1,4 +1,6 @@
 ﻿using Nancy;
+using Nancy.Responses;
+using SpreedlyCoreSharp.Request;
 
 namespace SpreedlyCoreSharp.WebSample.Modules
 {
@@ -11,6 +13,13 @@ namespace SpreedlyCoreSharp.WebSample.Modules
                     var gateways = service.GetGateways();
 
                     return View["Gateways", gateways];
+                };
+
+            Get["/add-test-gateway"] = _ =>
+                {
+                    service.AddGateway(new AddTestGatewayRequest { GatewayType = "test" });
+
+                    return new RedirectResponse("/gateways");
                 };
         }
     }
