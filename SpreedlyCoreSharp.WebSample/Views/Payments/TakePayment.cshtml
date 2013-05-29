@@ -101,6 +101,15 @@
             </div>
         </div>
 
+        <div class="control-group @Model.CssErrorFor(Model._Country)">
+            <label for="Country" class="control-label">Country</label>
+
+            <div class="controls">
+                <input id="Country" name="@Model._Country" value="@Model.Country" class="span2" type="text" />
+                <span class="help-inline">@Model.ErrorFor(Model._Country)</span>
+            </div>
+        </div>
+
         <div class="well">
             <div class="control-group @Model.CssErrorFor(Model._Number)">
                 <label for="CreditCardNumber" class="control-label">Card Number</label>
