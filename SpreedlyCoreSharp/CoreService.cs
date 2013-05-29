@@ -55,6 +55,12 @@ namespace SpreedlyCoreSharp
             _client.Request.Accept = HttpContentTypes.ApplicationXml;
         }
 
+        /// <summary>
+        /// Exposes a method to deserialize a group of transactions, used mainly in
+        /// the 3D secure call back functionality
+        /// </summary>
+        /// <param name="xml">raw transactions xml</param>
+        /// <returns></returns>
         public IEnumerable<Transaction> DeserializeTransactions(string xml)
         {
             var doc = new XmlDocument();
@@ -116,50 +122,60 @@ namespace SpreedlyCoreSharp
             return new StreamReader(stream).ReadToEnd();
         }
 
+        /// <summary>
+        /// Adds a gateway
+        /// </summary>
+        /// <param name="gatewayRequest">gateway request object</param>
+        /// <returns></returns>
         public Gateway AddGateway(object gatewayRequest)
         {
             var response = _client.Post(BaseUrl + GatewaysUrl, gatewayRequest, "application/xml");
 
-            byte[] byteArray = Encoding.ASCII.GetBytes(response.RawText);
-
-            var stream = new MemoryStream(byteArray);
-
-            return (Gateway)new XmlSerializer(typeof(Gateway)).Deserialize(stream);
+            return Deserialize<Gateway>(response.RawText);
         }
 
+        /// <summary>
+        /// Redacts a gateway, this is permanent.
+        /// </summary>
+        /// <param name="gatewayToken">token of gateway</param>
         public void RedactGateway(string gatewayToken)
         {
             // TODO: do something with response?
             _client.Put(BaseUrl + string.Format(RedactGatewayUrl, gatewayToken), "", "application/xml");
         }
 
+        /// <summary>
+        /// Fetches a list of gateways
+        /// </summary>
+        /// <returns></returns>
         public List<Gateway> GetGateways()
         {
             var response = _client.Get(BaseUrl + GatewaysUrl);
 
-            byte[] byteArray = Encoding.ASCII.GetBytes(response.RawText);
+            var gateways = Deserialize<GetGatewaysResponse>(response.RawText);
 
-            var stream = new MemoryStream(byteArray);
-
-            var responseObject = (GetGatewaysResponse)new XmlSerializer(typeof(GetGatewaysResponse)).Deserialize(stream);
-
-            return responseObject.Gateways;
+            return gateways.Gateways;
         }
 
+        /// <summary>
+        /// Fetches a single transaction
+        /// </summary>
+        /// <param name="token">token of transaction</param>
+        /// <returns></returns>
         public Transaction GetTransaction(string token)
         {
             string url = BaseUrl + string.Format(TransactionUrl, token);
 
             var response = _client.Get(url);
 
-
-            byte[] byteArray = Encoding.ASCII.GetBytes(response.RawText);
-
-            var stream = new MemoryStream(byteArray);
-
-            return (Transaction)new XmlSerializer(typeof(Transaction)).Deserialize(stream);
+            return Deserialize<Transaction>(response.RawText);
         }
 
+        /// <summary>
+        /// Fetches a list of transactions
+        /// </summary>
+        /// <param name="sinceToken">token of transaction to start from</param>
+        /// <returns></returns>
         public List<Transaction> GetTransactions(string sinceToken = "")
         {
             string url;
@@ -175,15 +191,17 @@ namespace SpreedlyCoreSharp
 
             var response = _client.Get(url);
 
-            byte[] byteArray = Encoding.ASCII.GetBytes(response.RawText);
+            var transactions = Deserialize<GetTransactionsResponse>(response.RawText);
 
-            var stream = new MemoryStream(byteArray);
-
-            var responseObject = (GetTransactionsResponse)new XmlSerializer(typeof(GetTransactionsResponse)).Deserialize(stream);
-
-            return responseObject.Transactions;
+            return transactions.Transactions;
         }
 
+        /// <summary>
+        /// Fetches a transaction raw transaction
+        /// This will be empty for test gateway transactions
+        /// </summary>
+        /// <param name="token">token of transaction</param>
+        /// <returns></returns>
         public string GetTransactionTranscript(string token)
         {
             string url = BaseUrl + string.Format(TransactionTranscriptUrl, token);
@@ -193,6 +211,11 @@ namespace SpreedlyCoreSharp
             return response.RawText;
         }
 
+        /// <summary>
+        /// Sends a purchase request to the active gateway
+        /// </summary>
+        /// <param name="request">purchase request</param>
+        /// <returns></returns>
         public Transaction ProcessPayment(ProcessPaymentRequest request)
         {
             var response = _client.Post(BaseUrl + string.Format(ProcessPaymentUrl, _gatewayToken), request, "application/xml");
