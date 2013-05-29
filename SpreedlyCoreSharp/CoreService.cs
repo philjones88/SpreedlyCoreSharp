@@ -130,7 +130,7 @@ namespace SpreedlyCoreSharp
         public void RedactGateway(string gatewayToken)
         {
             // TODO: do something with response?
-            _client.Put(BaseUrl + string.Format(RedactGatewayUrl, gatewayToken), null, "application/xml");
+            _client.Put(BaseUrl + string.Format(RedactGatewayUrl, gatewayToken), "", "application/xml");
         }
 
         public List<Gateway> GetGateways()
