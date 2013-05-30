@@ -103,7 +103,7 @@ namespace SpreedlyCoreSharp.Test
             Assert.AreEqual(new DateTime(2012, 11, 16, 20, 36, 03), paymentMethod.CreatedAt);
             Assert.AreEqual(new DateTime(2012, 11, 16, 20, 36, 04), paymentMethod.UpdatedAt);
             Assert.AreEqual("3886", paymentMethod.LastFourDigits);
-            Assert.AreEqual("visa", paymentMethod.CardType);
+            Assert.AreEqual(CardType.Visa, paymentMethod.CardType);
             Assert.AreEqual("Bob", paymentMethod.FirstName);
             Assert.AreEqual("Smith", paymentMethod.LastName);
             Assert.AreEqual(2020, paymentMethod.Year);
@@ -142,7 +142,7 @@ namespace SpreedlyCoreSharp.Test
             Assert.AreEqual(new DateTime(2012, 11, 09, 14, 05, 56), transaction.TransactionPaymentMethod.CreatedAt);
             Assert.AreEqual(new DateTime(2012, 11, 26, 21, 34, 19), transaction.TransactionPaymentMethod.UpdatedAt);
             Assert.AreEqual("1111", transaction.TransactionPaymentMethod.LastFourDigits);
-            Assert.AreEqual("visa", transaction.TransactionPaymentMethod.CardType);
+            Assert.AreEqual(CardType.Visa, transaction.TransactionPaymentMethod.CardType);
             Assert.AreEqual("Juvenal", transaction.TransactionPaymentMethod.FirstName);
             Assert.AreEqual("Volkman", transaction.TransactionPaymentMethod.LastName);
             Assert.AreEqual(2020, transaction.TransactionPaymentMethod.Year);
