@@ -18,23 +18,17 @@ namespace SpreedlyCoreSharp.Test
         [Test]
         public void CardType_Null()
         {
-            var actual = _service.Deserialize<Transaction>("<?xml version='1.0' encoding='utf-8' ?>" +
-                                                            "<transaction><payment_method>" +
-                                                           "<card_type nill='true'></card_type>" +
-                                                           "</payment_method></transaction>");
+            var actual = _service.Deserialize<CardType>("<CardType nill='true'></CardType>");
 
-            Assert.AreEqual(CardType.None, actual.TransactionPaymentMethod.CardType);
+            Assert.AreEqual(CardType.None, actual);
         }
 
         [Test]
         public void CardType_Empty()
         {
-            var actual = _service.Deserialize<Transaction>("<?xml version='1.0' encoding='utf-8' ?>" +
-                                                    "<transaction><payment_method>" +
-                                                   "<card_type></card_type>" +
-                                                   "</payment_method></transaction>");
+            var actual = _service.Deserialize<CardType>("<CardType></CardType>");
 
-            Assert.AreEqual(CardType.None, actual.TransactionPaymentMethod.CardType);
+            Assert.AreEqual(CardType.None, actual);
         }
 
         // I would ideally like it to serialise unknown enum values to something like None/Unknown but it
@@ -43,65 +37,47 @@ namespace SpreedlyCoreSharp.Test
         [ExpectedException(typeof(InvalidOperationException))]
         public void CardType_Unknown()
         {
-            var actual = _service.Deserialize<Transaction>("<?xml version='1.0' encoding='utf-8' ?>" +
-                                                    "<transaction><payment_method>" +
-                                                   "<card_type>Tesco</card_type>" +
-                                                   "</payment_method></transaction>");
+            _service.Deserialize<CardType>("<CardType>Tesco</CardType>");
         }
 
         [Test]
         public void CardType_Visa()
         {
-            var actual = _service.Deserialize<Transaction>("<?xml version='1.0' encoding='utf-8' ?>" +
-                                                            "<transaction><payment_method>" +
-                                                           "<card_type>visa</card_type>" +
-                                                           "</payment_method></transaction>");
+            var actual = _service.Deserialize<CardType>("<CardType>visa</CardType>");
 
-            Assert.AreEqual(CardType.Visa, actual.TransactionPaymentMethod.CardType);
+            Assert.AreEqual(CardType.Visa, actual);
         }
 
         [Test]
         public void CardType_MasterCard()
         {
-            var actual = _service.Deserialize<Transaction>("<?xml version='1.0' encoding='utf-8' ?>" +
-                                                            "<transaction><payment_method>" +
-                                                           "<card_type>master</card_type>" +
-                                                           "</payment_method></transaction>");
+            var actual = _service.Deserialize<CardType>("<CardType>master</CardType>");
 
-            Assert.AreEqual(CardType.MasterCard, actual.TransactionPaymentMethod.CardType);
+            Assert.AreEqual(CardType.MasterCard, actual);
         }
 
         [Test]
         public void CardType_AmericanExpress()
         {
-            var actual = _service.Deserialize<Transaction>("<?xml version='1.0' encoding='utf-8' ?>" +
-                                                "<transaction><payment_method>" +
-                                               "<card_type>american_express</card_type>" +
-                                               "</payment_method></transaction>");
+            var actual = _service.Deserialize<CardType>("<CardType>american_express</CardType>");
 
-            Assert.AreEqual(CardType.AmericanExpress, actual.TransactionPaymentMethod.CardType);
+            Assert.AreEqual(CardType.AmericanExpress, actual);
         }
 
         [Test]
         public void CardType_Discover()
         {
-            var actual = _service.Deserialize<Transaction>("<?xml version='1.0' encoding='utf-8' ?>" +
-                                                "<transaction><payment_method>" +
-                                               "<card_type>discover</card_type>" +
-                                               "</payment_method></transaction>");
+            var actual = _service.Deserialize<CardType>("<CardType>discover</CardType>");
 
-            Assert.AreEqual(CardType.Discover, actual.TransactionPaymentMethod.CardType);
+            Assert.AreEqual(CardType.Discover, actual);
         }
 
         [Test]
         public void CardType_Dankort()
         {
-            var actual = _service.Deserialize<Transaction>("<?xml version='1.0' encoding='utf-8' ?>" +
-                                    "<transaction><payment_method>" +
-                                   "<card_type>dankort</card_type>" +
-                                   "</payment_method></transaction>");
+            var actual = _service.Deserialize<CardType>("<CardType>dankort</CardType>");
 
-            Assert.AreEqual(CardType.Dankort, actual.TransactionPaymentMethod.CardType);
+            Assert.AreEqual(CardType.Dankort, actual);
         }
     }
 }
