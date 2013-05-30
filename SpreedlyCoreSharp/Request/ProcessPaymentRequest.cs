@@ -12,6 +12,23 @@ namespace SpreedlyCoreSharp.Request
         [XmlElement("amount")]
         public decimal Amount { get; set; }
 
+        [XmlIgnore]
+        public decimal AmountInDecimal
+        {
+            get
+            {
+                if (Amount > 0)
+                    return Amount / (decimal)100;
+
+                return 0;
+            }
+            set
+            {
+                if (value > 0)
+                    Amount = (int)(value * 100);
+            }
+        }
+
         [XmlElement("currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
 
