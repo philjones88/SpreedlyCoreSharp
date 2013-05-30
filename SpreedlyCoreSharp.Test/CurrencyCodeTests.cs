@@ -5,7 +5,7 @@ using System;
 namespace SpreedlyCoreSharp.Test
 {
     [TestFixture]
-    public class DomainTests
+    public class CurrencyCodeTests
     {
         private CoreService _service;
 

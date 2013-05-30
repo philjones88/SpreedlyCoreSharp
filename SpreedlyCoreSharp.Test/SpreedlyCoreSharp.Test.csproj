@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="CardTypeTests.cs" />
     <Compile Include="CoreServiceTests.cs" />
-    <Compile Include="DomainTests.cs" />
+    <Compile Include="CurrencyCodeTests.cs" />
     <Compile Include="EasyHttpTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
