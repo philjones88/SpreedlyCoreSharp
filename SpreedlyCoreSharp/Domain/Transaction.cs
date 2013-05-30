@@ -45,7 +45,8 @@ namespace SpreedlyCoreSharp.Domain
             public string VerificationValue { get; set; }
 
             [XmlElement("card_type")]
-            public string CardType { get; set; }
+            [DefaultValue(CardType.None)]
+            public CardType CardType { get; set; }
 
             [XmlElement("first_name")]
             public string FirstName { get; set; }
