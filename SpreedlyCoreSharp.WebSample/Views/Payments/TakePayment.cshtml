@@ -105,7 +105,19 @@
             <label for="Country" class="control-label">Country</label>
 
             <div class="controls">
-                <input id="Country" name="@Model._Country" value="@Model.Country" class="span2" type="text" />
+                <select id="Country" name="@Model._Country" class="input-large @Model.CssErrorFor(Model._Country)">
+                    @foreach (var country in Model.Countries)
+                    {
+                        if (country == Model.Country)
+                        {
+                            <option selected="selected">@country</option>
+                        }
+                        else
+                        {
+                         <option>@country</option>   
+                        }
+                    }
+                </select>
                 <span class="help-inline">@Model.ErrorFor(Model._Country)</span>
             </div>
         </div>

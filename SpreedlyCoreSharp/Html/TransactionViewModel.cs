@@ -144,6 +144,8 @@ namespace SpreedlyCoreSharp.Html
 
         public string Message { get; set; }
 
+        public List<string> Countries { get { return Domain.Countries.List; } } 
+
         public List<Transaction.PaymentMethod.Error> Errors { get; set; }
     }
 }

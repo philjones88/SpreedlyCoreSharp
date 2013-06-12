@@ -18,7 +18,8 @@ namespace SpreedlyCoreSharp.WebSample.Modules
                 return View["TakePayment", new TransactionViewModel()
                 {
                     ApiEnvironment = service.APIEnvironment,
-                    RedirectUrl = ConfigurationManager.AppSettings["PublicWebUrl"] + "/3d-secure/redirect"
+                    RedirectUrl = ConfigurationManager.AppSettings["PublicWebUrl"] + "/3d-secure/redirect",
+                    Country = "United Kingdom" // Default it to help your customers, it's a long list!
                 }];
             };
 
