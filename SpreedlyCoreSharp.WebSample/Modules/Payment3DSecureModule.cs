@@ -19,7 +19,7 @@ namespace SpreedlyCoreSharp.WebSample.Modules
                 {
                     ApiEnvironment = service.APIEnvironment,
                     RedirectUrl = ConfigurationManager.AppSettings["PublicWebUrl"] + "/3d-secure/redirect",
-                    Country = "United Kingdom" // Default it to help your customers, it's a long list!
+                    Country = "GB" // Default it to help your customers, it's a long list!
                 }];
             };
 

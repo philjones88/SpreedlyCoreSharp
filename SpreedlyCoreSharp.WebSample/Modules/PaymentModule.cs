@@ -16,7 +16,7 @@ namespace SpreedlyCoreSharp.WebSample.Modules
                 {
                     ApiEnvironment = service.APIEnvironment,
                     RedirectUrl = ConfigurationManager.AppSettings["PublicWebUrl"] + "/payment/redirect-back",
-                    Country = "United Kingdom" // Default it to help your customers, it's a long list!
+                    Country = "GB" // Default it to help your customers, it's a long list!
                 }];
             };
 
