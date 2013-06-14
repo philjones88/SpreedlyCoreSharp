@@ -166,7 +166,14 @@
                         @for (int i = 0; i <= 20; i++)
                         {
                             currentYear++;
+                            if (currentYear == Model.Year)
+                            {
+                            <option selected="selected">@currentYear</option>
+                            }
+                            else
+                            {
                             <option>@currentYear</option>
+                            }
                         }
                     </select>
 

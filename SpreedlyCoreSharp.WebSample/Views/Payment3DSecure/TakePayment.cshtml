@@ -104,17 +104,17 @@
         <div class="control-group @Model.CssErrorFor(Model._Country)">
             <label for="Country" class="control-label">Country</label>
 
-            <div class="controls">       
+            <div class="controls">
                 <select id="Country" name="@Model._Country" class="input-large @Model.CssErrorFor(Model._Country)">
                     @foreach (var country in Model.Countries)
                     {
                         if (country == Model.Country)
                         {
-                            <option selected="selected">@country</option>
+                        <option selected="selected">@country</option>
                         }
                         else
                         {
-                         <option>@country</option>   
+                        <option>@country</option>   
                         }
                     }
                 </select>
@@ -166,7 +166,14 @@
                         @for (int i = 0; i <= 20; i++)
                         {
                             currentYear++;
+                            if (currentYear == Model.Year)
+                            {
+                            <option selected="selected">@currentYear</option>
+                            }
+                            else
+                            {
                             <option>@currentYear</option>
+                            }
                         }
                     </select>
 
