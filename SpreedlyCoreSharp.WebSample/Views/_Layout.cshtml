@@ -1,5 +1,4 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
-              
 @functions
 {
 
@@ -23,6 +22,10 @@
         body {
             padding-top: 60px;
             padding-bottom: 40px;
+        }
+
+        .red {
+            color: red;
         }
     </style>
 </head>
@@ -61,6 +64,30 @@
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
+    <script>
+        $("#PaymentForm").validate({
+            rules: {
+                "credit_card[first_name]": "required",
+                "credit_card[last_name]": "required",
+                "credit_card[number]": "required",
+                "credit_card[verification_value]": "required"
+            },
+            messages: {
+                "credit_card[first_name]": "First name is required!",
+                "credit_card[last_name]": "Last name is required!",
+                "credit_card[number]": "Please enter your credit card number!",
+                "credit_card[verification_value]": "Please enter your security code!"
+            },
+            errorPlacement: function (error, element) {
+                element.next().append(error);
+                element.parent().parent().addClass("error");
+            },
+            success: function (label) {
+                label.parent().parent().parent().removeClass("error");
+            }
+        });
+    </script>
 </body>
 </html>

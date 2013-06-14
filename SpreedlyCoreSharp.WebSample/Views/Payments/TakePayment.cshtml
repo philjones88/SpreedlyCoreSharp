@@ -8,6 +8,8 @@
     <h1>Standard SpreedlyCore Payment</h1>
 
     <p>Use the test card datea from: <a href="https://core.spreedly.com/manual/test-data">here</a> (Don't use 3D Secure on this form)</p>
+    
+    <p> <span class="red">*</span> indicates a required field</p>
 
     @if (!Model.Succeeded)
     {
@@ -15,11 +17,11 @@
         
         if (!string.IsNullOrWhiteSpace(Model.Message))
         {
-        <p>Our provider gave the following message: @Model.Message</p>
+            <p>Our provider gave the following message: @Model.Message</p>
         }
     }
 
-    <form action="https://spreedlycore.com/v1/payment_methods" method="POST" class="form-horizontal">
+    <form name="PaymentForm" id="PaymentForm" action="https://spreedlycore.com/v1/payment_methods" method="POST" class="form-horizontal">
         <input name="@Model._RedirectUrl" type="hidden" value="@Model.RedirectUrl" />
 
         <input name="@Model._ApiLogin" type="hidden" value="@Model.ApiEnvironment" />
@@ -30,7 +32,7 @@
         }
 
         <div class="control-group @Model.CssErrorFor(Model._FirstName)">
-            <label for="FirstName" class="control-label">First name</label>
+            <label for="FirstName" class="control-label">First name <span class="red">*</span></label>
 
             <div class="controls">
                 <input id="FirstName" name="@Model._FirstName" value="@Model.FirstName" class="span5" type="text" />
@@ -39,7 +41,7 @@
         </div>
 
         <div class="control-group @Model.CssErrorFor(Model._LastName)">
-            <label for="LastName" class="control-label">Last name</label>
+            <label for="LastName" class="control-label">Last name <span class="red">*</span></label>
 
             <div class="controls">
                 <input id="LastName" name="@Model._LastName" value="@Model.LastName" class="span5" type="text" />
@@ -110,11 +112,11 @@
                     {
                         if (country.Alpha2 == Model.Country)
                         {
-                        <option selected="selected" value="@country.Alpha2">@country.Name</option>
+                            <option selected="selected" value="@country.Alpha2">@country.Name</option>
                         }
                         else
                         {
-                        <option value="@country.Alpha2">@country.Name</option>   
+                            <option value="@country.Alpha2">@country.Name</option>   
                         }
                     }
                 </select>
@@ -124,7 +126,7 @@
 
         <div class="well">
             <div class="control-group @Model.CssErrorFor(Model._Number)">
-                <label for="CreditCardNumber" class="control-label">Card Number</label>
+                <label for="CreditCardNumber" class="control-label">Card Number <span class="red">*</span></label>
 
                 <div class="controls">
                     <input id="CreditCardNumber" name="@Model._Number" value="@Model.Number" class="span3" type="text" />
@@ -134,7 +136,7 @@
             </div>
 
             <div class="control-group @Model.CssErrorFor(Model._VerificationValue)">
-                <label for="SecurityCode" class="control-label">Security Code</label>
+                <label for="SecurityCode" class="control-label">Security Code <span class="red">*</span></label>
 
                 <div class="controls">
                     <input id="SecurityCode" name="@Model._VerificationValue" value="@Model.VerificationValue" class="span1" type="text" />
@@ -144,7 +146,7 @@
             </div>
 
             <div class="control-group @Model.CssErrorFor(Model._Month) @Model.CssErrorFor(Model._Year)">
-                <label class="control-label">Expiry Date</label>
+                <label class="control-label">Expiry Date <span class="red">*</span></label>
 
                 <div class="controls">
                     <select id="ExpiryMonth" name="@Model._Month" class="input-small @Model.CssErrorFor(Model._Month)">
@@ -152,7 +154,7 @@
                         {
                             if (i == Model.Month)
                             {
-                            <option selected="selected">@i</option>
+                                <option selected="selected">@i</option>
                             }
                     
                             <option>@i</option>
@@ -168,11 +170,11 @@
                             currentYear++;
                             if (currentYear == Model.Year)
                             {
-                            <option selected="selected">@currentYear</option>
+                                <option selected="selected">@currentYear</option>
                             }
                             else
                             {
-                            <option>@currentYear</option>
+                                <option>@currentYear</option>
                             }
                         }
                     </select>
@@ -188,3 +190,4 @@
         </div>
     </form>
 </div>
+
