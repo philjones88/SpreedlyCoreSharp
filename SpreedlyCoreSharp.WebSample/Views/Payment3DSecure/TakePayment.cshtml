@@ -108,13 +108,13 @@
                 <select id="Country" name="@Model._Country" class="input-large @Model.CssErrorFor(Model._Country)">
                     @foreach (var country in Model.Countries)
                     {
-                        if (country == Model.Country)
+                        if (country.Alpha2 == Model.Country)
                         {
-                        <option selected="selected">@country</option>
+                        <option selected="selected" value="@country.Alpha2">@country.Name</option>
                         }
                         else
                         {
-                        <option>@country</option>   
+                        <option value="@country.Alpha2">@country.Name</option>   
                         }
                     }
                 </select>
