@@ -20,6 +20,27 @@ namespace SpreedlyCoreSharp.Domain
         Discover,
 
         [XmlEnum("dankort")]
-        Dankort
+        Dankort,
+
+        [XmlEnum("diners_club")]
+        DinnersClub,
+
+        [XmlEnum("jcb")]
+        JCB,
+
+        [XmlEnum("switch")]
+        Switch,
+
+        [XmlEnum("solo")]
+        Solo,
+
+        [XmlEnum("maestro")]
+        Maestro,
+
+        [XmlEnum("forbrugsforeningen")]
+        Forbrugsforeningen,
+
+        [XmlEnum("laser")]
+        Laser
     }
 }
