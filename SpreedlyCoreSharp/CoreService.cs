@@ -35,14 +35,6 @@ namespace SpreedlyCoreSharp
         public string APISigningSecret { get { return _apiSigningSecret; } }
         public string GatewayToken { get { return _gatewayToken; } }
 
-        internal CoreService(HttpClient client, string apiEnvironment, string apiSecret, string apiSigningSecret)
-        {
-            _apiEnvironment = apiEnvironment;
-            _apiSecret = apiSecret;
-            _apiSigningSecret = apiSigningSecret;
-            _client = client;
-        }
-
         public CoreService(string apiEnvironment, string apiSecret, string apiSigningSecret, string gatewayToken)
         {
             _apiEnvironment = apiEnvironment;
@@ -53,6 +45,7 @@ namespace SpreedlyCoreSharp
             _client = new HttpClient();
             _client.Request.SetBasicAuthentication(_apiEnvironment, _apiSecret);
             _client.Request.Accept = HttpContentTypes.ApplicationXml;
+            _client.Request.ForceBasicAuth = true;
         }
 
         /// <summary>
