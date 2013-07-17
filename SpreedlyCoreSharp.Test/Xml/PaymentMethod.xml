@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<payment_method>
+  <token>abcdefgasdasdasd</token>
+  <created_at type="datetime">2013-07-17T08:31:49Z</created_at>
+  <updated_at type="datetime">2013-07-17T08:31:49Z</updated_at>
+  <email></email>
+  <data nil="true"/>
+  <storage_state>cached</storage_state>
+  <last_four_digits>4444</last_four_digits>
+  <card_type>master</card_type>
+  <first_name>Bob</first_name>
+  <last_name>Smith</last_name>
+  <month type="integer">1</month>
+  <year type="integer">2013</year>
+  <address1></address1>
+  <address2></address2>
+  <city></city>
+  <state nil="true"/>
+  <zip></zip>
+  <country>GB</country>
+  <phone_number></phone_number>
+  <full_name>Bob Smith</full_name>
+  <payment_method_type>credit_card</payment_method_type>
+  <errors>
+    <error attribute="year" key="errors.expired">Year is expired</error>
+  </errors>
+  <verification_value>XXX</verification_value>
+  <number>XXXX-XXXX-XXXX-4444</number>
+</payment_method>

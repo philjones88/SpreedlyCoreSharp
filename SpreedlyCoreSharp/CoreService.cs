@@ -22,6 +22,8 @@ namespace SpreedlyCoreSharp
         private const string TransactionsUrl = "transactions.xml";
         private const string TransactionUrl = "transactions/{0}.xml";
         private const string TransactionTranscriptUrl = "transactions/{0}/transcript";
+        private const string PaymentMethodsUrl = "payment_methods.xml";
+        private const string PaymentMethodUrl = "payment_methods/{0}.xml";
 
         private readonly HttpClient _client;
 
@@ -188,6 +190,43 @@ namespace SpreedlyCoreSharp
 
             return transactions.Transactions;
         }
+
+        /// <summary>
+        /// Fetches a single payment method for a transaction token
+        /// </summary>
+        /// <param name="token">token of transaction</param>
+        /// <returns>transaction's payment method</returns>
+        public Transaction.PaymentMethod GetPaymentMethod(string token)
+        {
+            var response = _client.Get(BaseUrl + string.Format(PaymentMethodUrl, token));
+
+            return Deserialize<Transaction.PaymentMethod>(response.RawText);
+        }
+
+        /// <summary>
+        /// Fetches a list of payment methods
+        /// </summary>
+        /// <param name="sinceToken">token of transaction to start from</param>
+        /// <returns></returns>
+        public List<Transaction.PaymentMethod> GetPaymentMethods(string sinceToken = "")
+        {
+            string url;
+
+            if (!string.IsNullOrWhiteSpace(sinceToken))
+            {
+                url = string.Format("{0}{1}?since_token={2}", BaseUrl, PaymentMethodsUrl, sinceToken);
+            }
+            else
+            {
+                url = string.Format("{0}{1}", BaseUrl, PaymentMethodsUrl);
+            }
+
+            var response = _client.Get(url);
+
+            var transactions = Deserialize<GetPaymentMethodsResponse>(response.RawText);
+
+            return transactions.PaymentMethods;
+        } 
 
         /// <summary>
         /// Fetches a transaction raw transaction

@@ -27,6 +27,9 @@ namespace SpreedlyCoreSharp.WebSample.Modules
             // We then redirect or show the 3d secure form
             Get["/redirect"] = parameters =>
             {
+                // You can fetch the payment method before charging the card to say check the card type
+                var paymentMethod = service.GetPaymentMethod(Request.Query.token);
+
                 var transaction = service.ProcessPayment(new ProcessPaymentRequest
                 {
                     Attempt3DSecure = true,

@@ -89,6 +89,12 @@
     <Content Include="Xml\GetTransactions2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Xml\PaymentMethod.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Xml\PaymentMethods.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Xml\ProcessPaymentRequest.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

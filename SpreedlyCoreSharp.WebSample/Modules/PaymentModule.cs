@@ -8,7 +8,8 @@ namespace SpreedlyCoreSharp.WebSample.Modules
 {
     public class PaymentModule : NancyModule
     {
-        public PaymentModule(ICoreService service) : base("/payment")
+        public PaymentModule(ICoreService service)
+            : base("/payment")
         {
             Get["/"] = _ =>
             {
@@ -21,25 +22,28 @@ namespace SpreedlyCoreSharp.WebSample.Modules
             };
 
             Get["/redirect-back"] = _ =>
-            {
-                var transaction = service.ProcessPayment(new ProcessPaymentRequest
                 {
-                    AmountInDecimal = 1.0m, // Same as saying Amount = 100
-                    CurrencyCode = CurrencyCode.GBP,
-                    PaymentMethodToken = Request.Query.token
-                });
+                    // You can fetch the payment method before charging the card to say check the card type
+                    var paymentMethod = service.GetPaymentMethod(Request.Query.token);
 
-                if (transaction.Succeeded)
-                {
-                    return View["Payments/Success"];
-                }
+                    var transaction = service.ProcessPayment(new ProcessPaymentRequest
+                    {
+                        AmountInDecimal = 1.0m, // Same as saying Amount = 100
+                        CurrencyCode = CurrencyCode.GBP,
+                        PaymentMethodToken = Request.Query.token
+                    });
 
-                var viewModel = new TransactionViewModel();
+                    if (transaction.Succeeded)
+                    {
+                        return View["Payments/Success"];
+                    }
 
-                viewModel.PopulateFromTransaction(transaction, ConfigurationManager.AppSettings["PublicWebUrl"] + "/payment/redirect-back", service.APIEnvironment);
+                    var viewModel = new TransactionViewModel();
 
-                return View["Payments/TakePayment", viewModel];
-            };
+                    viewModel.PopulateFromTransaction(transaction, ConfigurationManager.AppSettings["PublicWebUrl"] + "/payment/redirect-back", service.APIEnvironment);
+
+                    return View["Payments/TakePayment", viewModel];
+                };
         }
     }
 }

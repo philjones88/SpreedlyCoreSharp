@@ -431,5 +431,26 @@ namespace SpreedlyCoreSharp.Test
 
             Assert.AreEqual(0, transaction.AmountInDecimal);
         }
+
+        [Test]
+        public void GetPaymentMethod_Deserialization()
+        {
+            var xmlpath = PathFor("PaymentMethod.xml");
+
+            var output = _service.Deserialize<Transaction.PaymentMethod>(File.ReadAllText(xmlpath));
+
+            Assert.IsNotNull(output);
+        }
+
+        [Test]
+        public void GetPaymentMethods_Deserialization()
+        {
+            var xmlpath = PathFor("PaymentMethods.xml");
+
+            var output = _service.Deserialize<GetPaymentMethodsResponse>(File.ReadAllText(xmlpath));
+
+            Assert.IsNotNull(output);
+            Assert.AreEqual(3, output.PaymentMethods.Count);
+        }
     }
 }

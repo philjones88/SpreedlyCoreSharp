@@ -9,6 +9,7 @@ namespace SpreedlyCoreSharp.Domain
     [XmlRoot("transaction")]
     public class Transaction
     {
+        [XmlRoot("payment_method")]
         public class PaymentMethod
         {
             public class Error
@@ -40,6 +41,9 @@ namespace SpreedlyCoreSharp.Domain
 
             [XmlElement("number")]
             public string Number { get; set; }
+
+            [XmlElement("storage_state")]
+            public string StorageState { get; set; }
 
             [XmlElement("verification_value")]
             public string VerificationValue { get; set; }

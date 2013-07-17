@@ -64,6 +64,7 @@
     <Compile Include="Request\ProcessPaymentRequest.cs" />
     <Compile Include="Response\GetGatewaysResponse.cs" />
     <Compile Include="Domain\Transaction.cs" />
+    <Compile Include="Response\GetPaymentMethodsResponse.cs" />
     <Compile Include="Response\GetTransactionsResponse.cs" />
   </ItemGroup>
   <ItemGroup>

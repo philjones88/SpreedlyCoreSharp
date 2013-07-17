@@ -39,6 +39,8 @@ namespace SpreedlyCoreSharp
         List<Gateway> GetGateways();
         Transaction GetTransaction(string token);
         List<Transaction> GetTransactions(string sinceToken = "");
+        Transaction.PaymentMethod GetPaymentMethod(string token);
+        List<Transaction.PaymentMethod> GetPaymentMethods(string sinceToken = "");
         string GetTransactionTranscript(string token);
         Transaction ProcessPayment(ProcessPaymentRequest request);
         bool ValidateTransactionSignature(Transaction transaction);
