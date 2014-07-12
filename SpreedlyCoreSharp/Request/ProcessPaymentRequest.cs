@@ -46,5 +46,8 @@ namespace SpreedlyCoreSharp.Request
         
         [XmlElement("description")]
         public string Description { get; set; }
+
+        [XmlElement("ip")]
+        public string Ip { get; set; }
     }
 }
