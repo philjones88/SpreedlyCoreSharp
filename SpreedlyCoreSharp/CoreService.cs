@@ -15,15 +15,16 @@ namespace SpreedlyCoreSharp
 {
     public class CoreService : ICoreService
     {
-        private const string BaseUrl = "https://spreedlycore.com/v1/";
+        private const string BaseUrl = "https://core.spreedly.com/v1/";
         private const string GatewaysUrl = "gateways.xml";
         private const string RedactGatewayUrl = "gateways/{0}/redact.xml";
         private const string ProcessPaymentUrl = "gateways/{0}/purchase.xml";
         private const string TransactionsUrl = "transactions.xml";
         private const string TransactionUrl = "transactions/{0}.xml";
-        private const string TransactionTranscriptUrl = "transactions/{0}/transcript";
         private const string PaymentMethodsUrl = "payment_methods.xml";
         private const string PaymentMethodUrl = "payment_methods/{0}.xml";
+        private const string PaymentMethodRetainUrl = "payment_methods/{0}/retain.xml";
+        private const string TransactionTranscriptUrl = "transactions/{0}/transcript";
 
         private readonly HttpClient _client;
 
@@ -226,7 +227,7 @@ namespace SpreedlyCoreSharp
             var transactions = Deserialize<GetPaymentMethodsResponse>(response.RawText);
 
             return transactions.PaymentMethods;
-        } 
+        }
 
         /// <summary>
         /// Fetches a transaction raw transaction
@@ -364,7 +365,7 @@ namespace SpreedlyCoreSharp
 
                 if (node != null)
                 {
-                    fieldsMushed += node.InnerText + "|"; 
+                    fieldsMushed += node.InnerText + "|";
                 }
             }
 
