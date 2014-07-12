@@ -1,4 +1,4 @@
-## Spreedly C#
+## Spreedly C\# ##
 
 ![Example Screenshot](https://raw.githubusercontent.com/philjones88/SpreedlyCoreSharp/master/SpreedlyCoreSharp.WebSample/Screenshots/spreedly-payment-screen.png)
 
