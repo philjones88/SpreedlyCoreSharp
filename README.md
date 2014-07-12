@@ -27,7 +27,7 @@ Please do not check this file back in!
 
 ### License
 
-MIT Licensed. See license file.
+MIT Licensed. See [LICENSE](/LICENSE) file.
 
 ### Author
 
