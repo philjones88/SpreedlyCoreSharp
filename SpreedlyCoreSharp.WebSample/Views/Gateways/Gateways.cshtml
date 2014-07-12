@@ -34,7 +34,10 @@
                     <td>@gateway.CreatedAt</td>
                     <td>@gateway.UpdatedAt</td>
                     <td>
-                        <a href="/gateways/redact/@gateway.Token" class="btn btn-danger" onclick="return confirm('Are you sure, redacting a gateway is permenant.')">Redact</a>
+                        @if (!gateway.Redacted)
+                        {
+                            <a href="/gateways/redact/@gateway.Token" class="btn btn-danger" onclick="return confirm('Are you sure, redacting a gateway is permenant.')">Redact</a>
+                        }
                     </td>
                 </tr>
             }
