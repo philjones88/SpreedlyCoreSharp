@@ -86,6 +86,12 @@
             },
             success: function (label) {
                 label.parent().parent().parent().removeClass("error");
+            },
+            // Disable the submit button so that double clickers don't make multiple transactions
+            submitHandler: function (form) {
+                $("button[type='submit']", form).attr("disabled", "disabled");
+
+                form.submit();
             }
         });
     </script>
