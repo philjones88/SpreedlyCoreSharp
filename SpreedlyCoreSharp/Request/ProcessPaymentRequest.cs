@@ -43,5 +43,8 @@ namespace SpreedlyCoreSharp.Request
 
         [XmlElement("order_id")]
         public string OrderId { get; set; }
+        
+        [XmlElement("description")]
+        public string Description { get; set; }
     }
 }
