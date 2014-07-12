@@ -6,10 +6,7 @@ namespace SpreedlyCoreSharp.WebSample.Modules
     {
         public HomeModule()
         {
-            Get["/"] = _ =>
-            {
-                return View["Home"];
-            };
+            Get["/"] = _ => View["Home"];
         }
     }
 }
