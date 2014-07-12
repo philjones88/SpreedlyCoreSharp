@@ -40,5 +40,8 @@ namespace SpreedlyCoreSharp.Request
 
         [XmlElement("callback_url")]
         public string CallbackUrl { get; set; }
+
+        [XmlElement("order_id")]
+        public string OrderId { get; set; }
     }
 }
