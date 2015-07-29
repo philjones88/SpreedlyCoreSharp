@@ -102,6 +102,15 @@ namespace SpreedlyCoreSharp.Domain
             [XmlElement("success")]
             public bool Success { get; set; }
 
+            [XmlElement("cancelled")]
+            public bool Cancelled { get; set; }
+
+            [XmlElement("pending")]
+            public bool Pending { get; set; }
+
+            [XmlElement("fraud_review")]
+            public bool FraudReview { get; set; }
+
             [XmlElement("message")]
             public string Message { get; set; }
 
@@ -221,6 +230,12 @@ namespace SpreedlyCoreSharp.Domain
 
         [XmlElement("token")]
         public string Token { get; set; }
+
+        /// <summary>
+        /// The gateway's corresponding transaction id.
+        /// </summary>
+        [XmlElement("gateway_transaction_id")]
+        public string GatewayTransactionId { get; set; }
 
         [XmlElement("gateway_token")]
         public string GatewayToken { get; set; }
