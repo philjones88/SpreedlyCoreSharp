@@ -1,19 +1,16 @@
-﻿using System.Xml.Serialization;
+﻿using RestSharp.Serializers;
 
 namespace SpreedlyCoreSharp.Request
 {
-    [XmlRoot("gateway")]
-    public class AddSagePayGatewayRequest
+    [SerializeAs(Name = "gateway")]
+    public class AddSagePayGatewayRequest : BaseGatewayRequest
     {
         public AddSagePayGatewayRequest()
         {
             GatewayType = "sage_pay";
         }
 
-        [XmlElement("gateway_type")]
-        public string GatewayType { get; set; }
-
-        [XmlElement("login")]
+        [SerializeAs(Name = "login")]
         public string Login { get; set; }
     }
 }
