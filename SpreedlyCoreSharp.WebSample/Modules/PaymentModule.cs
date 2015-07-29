@@ -28,7 +28,7 @@ namespace SpreedlyCoreSharp.WebSample.Modules
 
                     var transaction = service.ProcessPayment(new ProcessPaymentRequest
                     {
-                        AmountInDecimal = 1.0m, // Same as saying Amount = 100
+                        Amount = 100, // 1.00 GBP
                         CurrencyCode = CurrencyCode.GBP,
                         PaymentMethodToken = Request.Query.token
                     });
