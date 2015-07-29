@@ -55,6 +55,7 @@
     <Compile Include="Html\TransactionViewModel.cs" />
     <Compile Include="ICoreService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestWrapper.cs" />
     <Compile Include="Request\AddSagePayGatewayRequest.cs" />
     <Compile Include="Request\AddTestGatewayRequest.cs" />
     <Compile Include="Domain\Gateway.cs" />

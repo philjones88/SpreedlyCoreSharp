@@ -1,37 +1,54 @@
-﻿using RestSharp.Serializers;
-using SpreedlyCoreSharp.Domain;
+﻿using SpreedlyCoreSharp.Domain;
 using System;
+using System.Xml.Serialization;
 
 namespace SpreedlyCoreSharp.Request
 {
-    [SerializeAs(Name = "transaction")]
+    [XmlRoot("transaction")]
     public class ProcessPaymentRequest
     {
-        [SerializeAs(Name = "attempt_3dsecure")]
+        [XmlElement("attempt_3dsecure")]
         public bool Attempt3DSecure { get; set; }
 
-        [SerializeAs(Name = "amount")]
+        [XmlElement("amount")]
         public decimal Amount { get; set; }
 
-        [SerializeAs(Name = "currency_code")]
+        [XmlIgnore]
+        public decimal AmountInDecimal
+        {
+            get
+            {
+                if (Amount > 0)
+                    return Amount / (decimal)100;
+
+                return 0;
+            }
+            set
+            {
+                if (value > 0)
+                    Amount = (int)(value * 100);
+            }
+        }
+
+        [XmlElement("currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
 
-        [SerializeAs(Name = "payment_method_token")]
+        [XmlElement("payment_method_token")]
         public string PaymentMethodToken { get; set; }
 
-        [SerializeAs(Name = "redirect_url")]
+        [XmlElement("redirect_url")]
         public string RedirectUrl { get; set; }
 
-        [SerializeAs(Name = "callback_url")]
+        [XmlElement("callback_url")]
         public string CallbackUrl { get; set; }
 
-        [SerializeAs(Name = "order_id")]
+        [XmlElement("order_id")]
         public string OrderId { get; set; }
 
-        [SerializeAs(Name = "description")]
+        [XmlElement("description")]
         public string Description { get; set; }
 
-        [SerializeAs(Name = "ip")]
+        [XmlElement("ip")]
         public string Ip { get; set; }
     }
 }
