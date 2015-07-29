@@ -25,6 +25,7 @@ namespace SpreedlyCoreSharp
         private const string PaymentMethodUrl = "payment_methods/{0}.xml";
         private const string PaymentMethodRetainUrl = "payment_methods/{0}/retain.xml";
         private const string TransactionTranscriptUrl = "transactions/{0}/transcript";
+        private const string TransactionCreditUrl = "transactions/{0}/credit.xml";
 
         private readonly RestClient _client;
 
@@ -275,6 +276,16 @@ namespace SpreedlyCoreSharp
                     }
                 };
             }
+
+            return Deserialize<Transaction>(response.Content);
+        }
+
+        public Transaction RefundPayment(string transactionToken, RefundPaymentRequest requestBody)
+        {
+            var request = new RequestWrapper(string.Format(TransactionCreditUrl, transactionToken));
+            request.AddBody(requestBody);
+
+            var response = _client.Post(request);
 
             return Deserialize<Transaction>(response.Content);
         }

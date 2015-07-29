@@ -62,6 +62,7 @@
     <Compile Include="Request\AddTestGatewayRequest.cs" />
     <Compile Include="Domain\Gateway.cs" />
     <Compile Include="Request\BaseGatewayRequest.cs" />
+    <Compile Include="Request\RefundPaymentRequest.cs" />
     <Compile Include="Request\ProcessPaymentRequest.cs" />
     <Compile Include="Response\GetGatewaysResponse.cs" />
     <Compile Include="Domain\Transaction.cs" />
