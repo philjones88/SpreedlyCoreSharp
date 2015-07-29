@@ -88,7 +88,16 @@ namespace SpreedlyCoreSharp
 
             var serializer = new XmlSerializer(typeof(T));
 
-            var obj = (T)serializer.Deserialize(stream);
+            T obj;
+
+            try
+            {
+                obj = (T)serializer.Deserialize(stream);
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new InvalidOperationException("Error deserializing XML: " + Environment.NewLine + xml, ex);
+            }
 
             if (typeof(T) == typeof(Transaction))
             {

@@ -109,7 +109,14 @@ namespace SpreedlyCoreSharp.Domain
             public bool Pending { get; set; }
 
             [XmlElement("fraud_review")]
-            public bool FraudReview { get; set; }
+            private string FraudReviewString { get; set; }
+
+            [XmlIgnore]
+            public bool? FraudReview
+            {
+                get { return string.IsNullOrWhiteSpace(FraudReviewString) ? (bool?)null : bool.Parse(FraudReviewString); }
+                set { FraudReviewString = value == null ? null : value.Value.ToString(); }
+            }
 
             [XmlElement("message")]
             public string Message { get; set; }
