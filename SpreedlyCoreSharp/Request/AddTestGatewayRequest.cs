@@ -1,8 +1,8 @@
-﻿using RestSharp.Serializers;
+﻿using System.Xml.Serialization;
 
 namespace SpreedlyCoreSharp.Request
 {
-    [SerializeAs(Name = "gateway")]
+    [XmlRoot("gateway")]
     public class AddTestGatewayRequest : BaseGatewayRequest
     {
         public AddTestGatewayRequest()

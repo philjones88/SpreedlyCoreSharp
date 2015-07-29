@@ -125,7 +125,7 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         public Gateway AddGateway(BaseGatewayRequest gatewayRequest)
         {
-            var request = new RestRequest(GatewaysUrl);
+            var request = new RequestWrapper(GatewaysUrl);
             request.AddBody(gatewayRequest);
 
             var response = _client.Post(request);
@@ -140,7 +140,7 @@ namespace SpreedlyCoreSharp
         public void RedactGateway(string gatewayToken)
         {            
             // TODO: do something with response?
-            _client.Put(new RestRequest(string.Format(RedactGatewayUrl, gatewayToken)));
+            _client.Put(new RequestWrapper(string.Format(RedactGatewayUrl, gatewayToken)));
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         public List<Gateway> GetGateways()
         {
-            var response = _client.Get(new RestRequest(GatewaysUrl));
+            var response = _client.Get(new RequestWrapper(GatewaysUrl));
 
             var gateways = Deserialize<GetGatewaysResponse>(response.Content);
 
@@ -163,7 +163,7 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         public Transaction GetTransaction(string token)
         {
-            var response = _client.Get(new RestRequest(string.Format(TransactionUrl, token)));
+            var response = _client.Get(new RequestWrapper(string.Format(TransactionUrl, token)));
 
             return Deserialize<Transaction>(response.Content);
         }
@@ -175,7 +175,7 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         public List<Transaction> GetTransactions(string sinceToken = "")
         {
-            var request = new RestRequest(TransactionsUrl);
+            var request = new RequestWrapper(TransactionsUrl);
 
             if (!string.IsNullOrWhiteSpace(sinceToken))
             {
@@ -196,7 +196,7 @@ namespace SpreedlyCoreSharp
         /// <returns>transaction's payment method</returns>
         public Transaction.PaymentMethod GetPaymentMethod(string token)
         {
-            var response = _client.Get(new RestRequest(string.Format(PaymentMethodUrl, token)));
+            var response = _client.Get(new RequestWrapper(string.Format(PaymentMethodUrl, token)));
 
             return Deserialize<Transaction.PaymentMethod>(response.Content);
         }
@@ -208,7 +208,7 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         public List<Transaction.PaymentMethod> GetPaymentMethods(string sinceToken = "")
         {
-            var request = new RestRequest(PaymentMethodsUrl);
+            var request = new RequestWrapper(PaymentMethodsUrl);
 
             if (!string.IsNullOrWhiteSpace(sinceToken))
             {
@@ -230,7 +230,7 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         public string GetTransactionTranscript(string token)
         {
-            var response = _client.Get(new RestRequest(string.Format(TransactionTranscriptUrl, token)));
+            var response = _client.Get(new RequestWrapper(string.Format(TransactionTranscriptUrl, token)));
 
             return response.Content;
         }
@@ -252,7 +252,7 @@ namespace SpreedlyCoreSharp
                 throw new ArgumentException("Redirect URL cannot be empty.");
             }
 
-            var request = new RestRequest(string.Format(ProcessPaymentUrl, _gatewayToken));
+            var request = new RequestWrapper(string.Format(ProcessPaymentUrl, _gatewayToken));
             request.AddBody(requestBody);
 
             var response = _client.Post(request);
