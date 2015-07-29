@@ -30,9 +30,9 @@
                     <td>@trans.CurrencyCode</td>
                     <td>@trans.TransactionType</td>
                     <td>
-                        <a href="/transactions/?since=@trans.Token">View From</a><br />
-                        <a href="/transactions/@trans.Token">View Details</a><br />
-                        <a href="/transactions/@trans.Token/transcript">View Transcript</a>
+                        <a href="@Url.Content("~/transactions/?since=" + trans.Token)">View From</a><br />
+                        <a href="@Url.Content("~/transactions/" + trans.Token)">View Details</a><br />
+                        <a href="@Url.Content("~/transactions/" + trans.Token + "/transcript")">View Transcript</a>
                     </td>
                 </tr>
             }
@@ -43,5 +43,5 @@
 
     <p>Click a transaction token to use that as the start of paging (it is limited to 20 records at a time)</p>
 
-    <a href="/transactions">All Transactions</a>
+    <a href="@Url.Content("~/transactions")">All Transactions</a>
 </div>
