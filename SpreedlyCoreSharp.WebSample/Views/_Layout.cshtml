@@ -17,7 +17,7 @@
 <head>
     <title>SpreedlyCoreSharp</title>
 
-    <link type="text/css" rel="stylesheet" href="/Content/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/bootstrap.min.css")" />
     <style type="text/css">
         body {
             padding-top: 60px;
@@ -36,19 +36,19 @@
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="#">SpreedlyCoreSharp</a><div class="nav-collapse collapse">
                     <ul class="nav">
                         <li class="@IsActive("Home")">
-                            <a href="/">Home</a>
+                            <a href="@Url.Content("~/")">Home</a>
                         </li>
                         <li class="@IsActive("Payment")">
-                            <a href="/payment">Payment Form</a>
+                            <a href="@Url.Content("~/payment")">Payment Form</a>
                         </li>
                         <li class="@IsActive("3DPayment")">
-                            <a href="/3d-secure">3D Payment Form</a>
+                            <a href="@Url.Content("~/3d-secure")">3D Payment Form</a>
                         </li>
                         <li class="@IsActive("Transaction")">
-                            <a href="/transactions">Transactions</a>
+                            <a href="@Url.Content("~/transactions")">Transactions</a>
                         </li>
                         <li class="@IsActive("Gateway")">
-                            <a href="/gateways">Gateways</a>
+                            <a href="@Url.Content("~/gateways")">Gateways</a>
                         </li>
                     </ul>
 

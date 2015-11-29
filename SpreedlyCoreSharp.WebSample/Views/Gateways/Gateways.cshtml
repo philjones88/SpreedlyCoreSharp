@@ -5,7 +5,7 @@
 }
 
 <div class="span12">
-    <a href="/gateways/add-test-gateway" class="btn" onclick="return confirm('Are you sure you want to add a test gateway?')">Add Test Gateway</a>
+    <a href="@Url.Content("~/gateways/add-test-gateway")" class="btn" onclick="return confirm('Are you sure you want to add a test gateway?')">Add Test Gateway</a>
 
     <br />
 
@@ -36,7 +36,7 @@
                     <td>
                         @if (!gateway.Redacted)
                         {
-                            <a href="/gateways/redact/@gateway.Token" class="btn btn-danger" onclick="return confirm('Are you sure, redacting a gateway is permenant.')">Redact</a>
+                            <a href="@Url.Content("~/gateways/redact/" + gateway.Token)" class="btn btn-danger" onclick="return confirm('Are you sure, redacting a gateway is permenant.')">Redact</a>
                         }
                     </td>
                 </tr>

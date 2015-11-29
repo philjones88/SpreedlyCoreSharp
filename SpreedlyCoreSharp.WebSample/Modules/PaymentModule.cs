@@ -17,7 +17,7 @@ namespace SpreedlyCoreSharp.WebSample.Modules
                 {
                     ApiEnvironment = service.APIEnvironment,
                     RedirectUrl = ConfigurationManager.AppSettings["PublicWebUrl"] + "/payment/redirect-back",
-                    Country = "GB" // Default it to help your customers, it's a long list!
+                    Country = "USA" // Default it to help your customers, it's a long list!
                 }];
             };
 
@@ -28,8 +28,8 @@ namespace SpreedlyCoreSharp.WebSample.Modules
 
                     var transaction = service.ProcessPayment(new ProcessPaymentRequest
                     {
-                        AmountInDecimal = 1.0m, // Same as saying Amount = 100
-                        CurrencyCode = CurrencyCode.GBP,
+                        Amount = 100, // 1.00 GBP
+                        CurrencyCode = CurrencyCode.USD,
                         PaymentMethodToken = Request.Query.token
                     });
 

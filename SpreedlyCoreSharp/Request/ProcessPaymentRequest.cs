@@ -1,5 +1,6 @@
-﻿using System.Xml.Serialization;
-using SpreedlyCoreSharp.Domain;
+﻿using SpreedlyCoreSharp.Domain;
+using System;
+using System.Xml.Serialization;
 
 namespace SpreedlyCoreSharp.Request
 {
@@ -43,7 +44,7 @@ namespace SpreedlyCoreSharp.Request
 
         [XmlElement("order_id")]
         public string OrderId { get; set; }
-        
+
         [XmlElement("description")]
         public string Description { get; set; }
 

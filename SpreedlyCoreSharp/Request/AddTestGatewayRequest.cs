@@ -3,14 +3,11 @@
 namespace SpreedlyCoreSharp.Request
 {
     [XmlRoot("gateway")]
-    public class AddTestGatewayRequest
+    public class AddTestGatewayRequest : BaseGatewayRequest
     {
         public AddTestGatewayRequest()
         {
             GatewayType = "test";
         }
-
-        [XmlElement("gateway_type")]
-        public string GatewayType { get; set; }
     }
 }
