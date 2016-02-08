@@ -10,6 +10,7 @@ using SpreedlyCoreSharp.Domain;
 using SpreedlyCoreSharp.Request;
 using SpreedlyCoreSharp.Response;
 using RestSharp;
+using RestSharp.Authenticators;
 
 namespace SpreedlyCoreSharp
 {
