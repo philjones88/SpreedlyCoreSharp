@@ -5,11 +5,8 @@ using System.Xml.Serialization;
 namespace SpreedlyCoreSharp.Request
 {
     [XmlRoot("transaction")]
-    public class ProcessPaymentRequest
+    public class RefundPaymentRequest
     {
-        [XmlElement("attempt_3dsecure")]
-        public bool Attempt3DSecure { get; set; }
-
         [XmlElement("amount")]
         public decimal Amount { get; set; }
 
@@ -32,16 +29,7 @@ namespace SpreedlyCoreSharp.Request
 
         [XmlElement("currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
-
-        [XmlElement("payment_method_token")]
-        public string PaymentMethodToken { get; set; }
-
-        [XmlElement("redirect_url")]
-        public string RedirectUrl { get; set; }
-
-        [XmlElement("callback_url")]
-        public string CallbackUrl { get; set; }
-
+        
         [XmlElement("order_id")]
         public string OrderId { get; set; }
 
@@ -50,5 +38,14 @@ namespace SpreedlyCoreSharp.Request
 
         [XmlElement("ip")]
         public string Ip { get; set; }
+
+        [XmlElement("email")]
+        public string Email { get; set; }
+
+        [XmlElement("merchant_name_descriptor")]
+        public string MerchantNameDescriptor { get; set; }
+
+        [XmlElement("merchant_location_descriptor")]
+        public string MerchantLocationDescriptor { get; set; }
     }
 }

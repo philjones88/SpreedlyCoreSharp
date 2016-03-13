@@ -3,11 +3,11 @@
 namespace SpreedlyCoreSharp.Request
 {
     [XmlRoot("gateway")]
-    public class AddSagePayGatewayRequest : BaseGatewayRequest
+    public class AddStripeGatewayRequest : BaseGatewayRequest
     {
-        public AddSagePayGatewayRequest()
+        public AddStripeGatewayRequest()
         {
-            GatewayType = "sage_pay";
+            GatewayType = "stripe";
         }
 
         [XmlElement("login")]

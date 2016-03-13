@@ -34,7 +34,7 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         string Serialize<T>(object item);
 
-        Gateway AddGateway(object gatewayRequest);
+        Gateway AddGateway(BaseGatewayRequest gatewayRequest);
         void RedactGateway(string gatewayToken);
         List<Gateway> GetGateways();
         Transaction GetTransaction(string token);

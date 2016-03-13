@@ -6,10 +6,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using EasyHttp.Http;
 using SpreedlyCoreSharp.Domain;
 using SpreedlyCoreSharp.Request;
 using SpreedlyCoreSharp.Response;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace SpreedlyCoreSharp
 {
@@ -25,8 +26,9 @@ namespace SpreedlyCoreSharp
         private const string PaymentMethodUrl = "payment_methods/{0}.xml";
         private const string PaymentMethodRetainUrl = "payment_methods/{0}/retain.xml";
         private const string TransactionTranscriptUrl = "transactions/{0}/transcript";
+        private const string TransactionCreditUrl = "transactions/{0}/credit.xml";
 
-        private readonly HttpClient _client;
+        private readonly RestClient _client;
 
         private readonly string _apiEnvironment;
         private readonly string _apiSecret;
@@ -45,10 +47,10 @@ namespace SpreedlyCoreSharp
             _apiSigningSecret = apiSigningSecret;
             _gatewayToken = gatewayToken;
 
-            _client = new HttpClient();
-            _client.Request.SetBasicAuthentication(_apiEnvironment, _apiSecret);
-            _client.Request.Accept = HttpContentTypes.ApplicationXml;
-            _client.Request.ForceBasicAuth = true;
+            _client = new RestClient(BaseUrl);
+            _client.Authenticator = new HttpBasicAuthenticator(_apiEnvironment, _apiSecret);
+            _client.AddDefaultHeader("accept", "application/xml");
+            _client.AddDefaultHeader("content-type", "application/xml");
         }
 
         /// <summary>
@@ -87,7 +89,16 @@ namespace SpreedlyCoreSharp
 
             var serializer = new XmlSerializer(typeof(T));
 
-            var obj = (T)serializer.Deserialize(stream);
+            T obj;
+
+            try
+            {
+                obj = (T)serializer.Deserialize(stream);
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new InvalidOperationException("Error deserializing XML: " + Environment.NewLine + xml, ex);
+            }
 
             if (typeof(T) == typeof(Transaction))
             {
@@ -123,11 +134,14 @@ namespace SpreedlyCoreSharp
         /// </summary>
         /// <param name="gatewayRequest">gateway request object</param>
         /// <returns></returns>
-        public Gateway AddGateway(object gatewayRequest)
+        public Gateway AddGateway(BaseGatewayRequest gatewayRequest)
         {
-            var response = _client.Post(BaseUrl + GatewaysUrl, gatewayRequest, "application/xml");
+            var request = new RequestWrapper(GatewaysUrl);
+            request.AddBody(gatewayRequest);
 
-            return Deserialize<Gateway>(response.RawText);
+            var response = _client.Post(request);
+
+            return Deserialize<Gateway>(response.Content);
         }
 
         /// <summary>
@@ -135,9 +149,9 @@ namespace SpreedlyCoreSharp
         /// </summary>
         /// <param name="gatewayToken">token of gateway</param>
         public void RedactGateway(string gatewayToken)
-        {
+        {            
             // TODO: do something with response?
-            _client.Put(BaseUrl + string.Format(RedactGatewayUrl, gatewayToken), "", "application/xml");
+            _client.Put(new RequestWrapper(string.Format(RedactGatewayUrl, gatewayToken)));
         }
 
         /// <summary>
@@ -146,9 +160,9 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         public List<Gateway> GetGateways()
         {
-            var response = _client.Get(BaseUrl + GatewaysUrl);
+            var response = _client.Get(new RequestWrapper(GatewaysUrl));
 
-            var gateways = Deserialize<GetGatewaysResponse>(response.RawText);
+            var gateways = Deserialize<GetGatewaysResponse>(response.Content);
 
             return gateways.Gateways;
         }
@@ -160,11 +174,9 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         public Transaction GetTransaction(string token)
         {
-            string url = BaseUrl + string.Format(TransactionUrl, token);
+            var response = _client.Get(new RequestWrapper(string.Format(TransactionUrl, token)));
 
-            var response = _client.Get(url);
-
-            return Deserialize<Transaction>(response.RawText);
+            return Deserialize<Transaction>(response.Content);
         }
 
         /// <summary>
@@ -174,20 +186,16 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         public List<Transaction> GetTransactions(string sinceToken = "")
         {
-            string url;
+            var request = new RequestWrapper(TransactionsUrl);
 
             if (!string.IsNullOrWhiteSpace(sinceToken))
             {
-                url = string.Format("{0}{1}?since_token={2}", BaseUrl, TransactionsUrl, sinceToken);
-            }
-            else
-            {
-                url = string.Format("{0}{1}", BaseUrl, TransactionsUrl);
+                request.AddParameter("since_token", sinceToken);
             }
 
-            var response = _client.Get(url);
+            var response = _client.Get(request);
 
-            var transactions = Deserialize<GetTransactionsResponse>(response.RawText);
+            var transactions = Deserialize<GetTransactionsResponse>(response.Content);
 
             return transactions.Transactions;
         }
@@ -199,9 +207,9 @@ namespace SpreedlyCoreSharp
         /// <returns>transaction's payment method</returns>
         public Transaction.PaymentMethod GetPaymentMethod(string token)
         {
-            var response = _client.Get(BaseUrl + string.Format(PaymentMethodUrl, token));
+            var response = _client.Get(new RequestWrapper(string.Format(PaymentMethodUrl, token)));
 
-            return Deserialize<Transaction.PaymentMethod>(response.RawText);
+            return Deserialize<Transaction.PaymentMethod>(response.Content);
         }
 
         /// <summary>
@@ -211,20 +219,16 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         public List<Transaction.PaymentMethod> GetPaymentMethods(string sinceToken = "")
         {
-            string url;
+            var request = new RequestWrapper(PaymentMethodsUrl);
 
             if (!string.IsNullOrWhiteSpace(sinceToken))
             {
-                url = string.Format("{0}{1}?since_token={2}", BaseUrl, PaymentMethodsUrl, sinceToken);
-            }
-            else
-            {
-                url = string.Format("{0}{1}", BaseUrl, PaymentMethodsUrl);
+                request.AddParameter("since_token", sinceToken);
             }
 
-            var response = _client.Get(url);
+            var response = _client.Get(request);
 
-            var transactions = Deserialize<GetPaymentMethodsResponse>(response.RawText);
+            var transactions = Deserialize<GetPaymentMethodsResponse>(response.Content);
 
             return transactions.PaymentMethods;
         }
@@ -237,11 +241,9 @@ namespace SpreedlyCoreSharp
         /// <returns></returns>
         public string GetTransactionTranscript(string token)
         {
-            string url = BaseUrl + string.Format(TransactionTranscriptUrl, token);
+            var response = _client.Get(new RequestWrapper(string.Format(TransactionTranscriptUrl, token)));
 
-            var response = _client.Get(url);
-
-            return response.RawText;
+            return response.Content;
         }
 
         /// <summary>
@@ -249,27 +251,30 @@ namespace SpreedlyCoreSharp
         /// </summary>
         /// <param name="request">purchase request</param>
         /// <returns></returns>
-        public Transaction ProcessPayment(ProcessPaymentRequest request)
+        public Transaction ProcessPayment(ProcessPaymentRequest requestBody)
         {
-            var response = _client.Post(BaseUrl + string.Format(ProcessPaymentUrl, _gatewayToken), request, "application/xml");
-
-            if (request.Attempt3DSecure && string.IsNullOrWhiteSpace(request.CallbackUrl))
+            if (requestBody.Attempt3DSecure && string.IsNullOrWhiteSpace(requestBody.CallbackUrl))
             {
                 throw new ArgumentException("Callback URL cannot be empty.");
             }
 
-            if (request.Attempt3DSecure && string.IsNullOrWhiteSpace(request.RedirectUrl))
+            if (requestBody.Attempt3DSecure && string.IsNullOrWhiteSpace(requestBody.RedirectUrl))
             {
                 throw new ArgumentException("Redirect URL cannot be empty.");
             }
 
-            byte[] byteArray = Encoding.ASCII.GetBytes(response.RawText);
+            var request = new RequestWrapper(string.Format(ProcessPaymentUrl, _gatewayToken));
+            request.AddBody(requestBody);
+
+            var response = _client.Post(request);
+
+            byte[] byteArray = Encoding.ASCII.GetBytes(response.Content);
 
             var stream = new MemoryStream(byteArray);
 
             // Seems if you send absolutely nothing it decides to return <errors> rather than full <transaction> doc...
             // Not sure how to append this to a Transaction document.
-            if (response.RawText.StartsWith("<errors>"))
+            if (response.Content.StartsWith("<errors>"))
             {
                 var errors = (TransactionErrors)new XmlSerializer(typeof(TransactionErrors)).Deserialize(stream);
 
@@ -282,7 +287,17 @@ namespace SpreedlyCoreSharp
                 };
             }
 
-            return Deserialize<Transaction>(response.RawText);
+            return Deserialize<Transaction>(response.Content);
+        }
+
+        public Transaction RefundPayment(string transactionToken, RefundPaymentRequest requestBody)
+        {
+            var request = new RequestWrapper(string.Format(TransactionCreditUrl, transactionToken));
+            request.AddBody(requestBody);
+
+            var response = _client.Post(request);
+
+            return Deserialize<Transaction>(response.Content);
         }
 
         /// <summary>

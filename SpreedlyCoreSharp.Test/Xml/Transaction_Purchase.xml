@@ -23,6 +23,7 @@
     <cvv_message nil="true"/>
     <error_code/>
     <error_detail nil="true"/>
+    <fraud_review nil="true"/>
     <created_at type="datetime">2012-11-26T21:34:19Z</created_at>
     <updated_at type="datetime">2012-11-26T21:34:19Z</updated_at>
   </response>
