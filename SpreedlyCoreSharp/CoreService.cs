@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
@@ -46,6 +47,9 @@ namespace SpreedlyCoreSharp
             _gatewayToken = gatewayToken;
 
             _client = new HttpClient();
+
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
             _client.Request.SetBasicAuthentication(_apiEnvironment, _apiSecret);
             _client.Request.Accept = HttpContentTypes.ApplicationXml;
             _client.Request.ForceBasicAuth = true;
