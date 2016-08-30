@@ -149,6 +149,8 @@ namespace SpreedlyCoreSharp.Test
             Assert.AreEqual(4, transaction.TransactionPaymentMethod.Month);
             Assert.AreEqual("credit_card", transaction.TransactionPaymentMethod.PaymentMethodType);
             Assert.AreEqual("XXXX-XXXX-XXXX-1111", transaction.TransactionPaymentMethod.Number);
+
+            Assert.AreEqual(null, transaction.TransactionResponse.FraudReview);
         }
 
         [Test]

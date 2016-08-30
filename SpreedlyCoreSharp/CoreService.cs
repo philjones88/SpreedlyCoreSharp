@@ -10,6 +10,7 @@ using SpreedlyCoreSharp.Domain;
 using SpreedlyCoreSharp.Request;
 using SpreedlyCoreSharp.Response;
 using RestSharp;
+using RestSharp.Authenticators;
 
 namespace SpreedlyCoreSharp
 {
@@ -25,6 +26,7 @@ namespace SpreedlyCoreSharp
         private const string PaymentMethodUrl = "payment_methods/{0}.xml";
         private const string PaymentMethodRetainUrl = "payment_methods/{0}/retain.xml";
         private const string TransactionTranscriptUrl = "transactions/{0}/transcript";
+        private const string TransactionCreditUrl = "transactions/{0}/credit.xml";
 
         private readonly RestClient _client;
 
@@ -87,7 +89,16 @@ namespace SpreedlyCoreSharp
 
             var serializer = new XmlSerializer(typeof(T));
 
-            var obj = (T)serializer.Deserialize(stream);
+            T obj;
+
+            try
+            {
+                obj = (T)serializer.Deserialize(stream);
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new InvalidOperationException("Error deserializing XML: " + Environment.NewLine + xml, ex);
+            }
 
             if (typeof(T) == typeof(Transaction))
             {
@@ -275,6 +286,16 @@ namespace SpreedlyCoreSharp
                     }
                 };
             }
+
+            return Deserialize<Transaction>(response.Content);
+        }
+
+        public Transaction RefundPayment(string transactionToken, RefundPaymentRequest requestBody)
+        {
+            var request = new RequestWrapper(string.Format(TransactionCreditUrl, transactionToken));
+            request.AddBody(requestBody);
+
+            var response = _client.Post(request);
 
             return Deserialize<Transaction>(response.Content);
         }
