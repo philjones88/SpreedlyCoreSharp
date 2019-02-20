@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreedlyCoreSharp.Test", "SpreedlyCoreSharp.Test\SpreedlyCoreSharp.Test.csproj", "{525D2661-1914-4E12-8D44-528BFB1784E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpreedlyCoreSharp.Test", "SpreedlyCoreSharp.Test\SpreedlyCoreSharp.Test.csproj", "{525D2661-1914-4E12-8D44-528BFB1784E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreedlyCoreSharp", "SpreedlyCoreSharp\SpreedlyCoreSharp.csproj", "{6D00558B-C6EB-47AF-914D-466720C0E2EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpreedlyCoreSharp", "SpreedlyCoreSharp\SpreedlyCoreSharp.csproj", "{6D00558B-C6EB-47AF-914D-466720C0E2EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreedlyCoreSharp.WebSample", "SpreedlyCoreSharp.WebSample\SpreedlyCoreSharp.WebSample.csproj", "{93CFCE62-4028-4F0A-8218-9851733940ED}"
 EndProject
@@ -30,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B08F677-1E21-4816-89CB-AA80A9DF1A45}
 	EndGlobalSection
 EndGlobal
